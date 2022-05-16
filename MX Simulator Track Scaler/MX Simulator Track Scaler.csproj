@@ -85,8 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="cube.ico" />
-    <None Include="Resources\image0.jpg" />
-    <None Include="Resources\[removal.ai]_tmp-6210c0934255d.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

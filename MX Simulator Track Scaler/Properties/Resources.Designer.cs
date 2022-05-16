@@ -59,25 +59,5 @@ namespace MX_Simulator_Track_Scaler.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _removal_ai__tmp_6210c0934255d {
-            get {
-                object obj = ResourceManager.GetObject("[removal.ai]_tmp-6210c0934255d", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap image0 {
-            get {
-                object obj = ResourceManager.GetObject("image0", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }
