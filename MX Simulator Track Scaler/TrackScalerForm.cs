@@ -30,6 +30,7 @@ namespace MX_Simulator_Track_Scaler
         StreamReader flaggers_file;
         StreamReader timing_gates_file;
         StreamWriter temp_file;
+        readonly string temp_file_dir = Environment.CurrentDirectory + "\\replace.tmp";
 
         // Scalar and Multiplier
         decimal scalar_input;
@@ -45,7 +46,6 @@ namespace MX_Simulator_Track_Scaler
         decimal terrain_scale;
         decimal min_height;
         decimal max_height;
-        decimal[] coords;
 
         /*
         #################
@@ -151,6 +151,7 @@ namespace MX_Simulator_Track_Scaler
         private void ScaleButton_Click(object sender, EventArgs e) {
 
             progressLabel.ResetText();
+            fileCheckErrLabel.ResetText();
 
             /*
             ##########################
@@ -192,7 +193,9 @@ namespace MX_Simulator_Track_Scaler
             */
 
             // Total lines is initialized to 1 for the 1 line in terrain.hf
-            int total_lines = 1;
+            int total_lines = 0;
+
+            if (terrainCheckBox.Checked) total_lines++;
 
             if (BillboardCheckBox.Checked) {
                 billboards_file = File.OpenText(Environment.CurrentDirectory + "\\billboards");
@@ -226,6 +229,18 @@ namespace MX_Simulator_Track_Scaler
             // Parse the user input text box and output to scalar_input variable
             decimal.TryParse(UserInputTextBox.Text, out scalar_input);
 
+            // Reget terrain info
+            terrain_file = File.OpenText(terrain_filepath);
+            string line = terrain_file.ReadLine();
+            terrain_file.Close();
+            string[] args = line.Split(' ');
+
+            // Re-read into variables
+            decimal.TryParse(args[1], out terrain_scale);
+            decimal.TryParse(args[2], out min_height);
+            decimal.TryParse(args[3], out max_height);
+
+
             multiplier = scalar_input;
             if (ToFactorRadioButton.Checked) {
                 multiplier = scalar_input / terrain_scale;
@@ -234,15 +249,26 @@ namespace MX_Simulator_Track_Scaler
             if (terrainCheckBox.Checked) {
                 if (!Do_terrain_work()) return;
             }
-            
+            else {
+                ChangeLabel(fileCheckErrLabel, Color.Black, "Warning: multiple scalings without changing terrain can cause issues");
+            }
 
-            if (BillboardCheckBox.Checked) Do_billboard_work();
-            if (StatueCheckBox.Checked) Do_statue_work();
-            if (DecalsCheckBox.Checked) Do_decal_work();
-            if (FlaggersCheckBox.Checked) Do_flagger_work();
-            if (TimingGateCheckBox.Checked) Do_timing_gate_work();
 
-            fileCheckErrLabel.ResetText();
+            if (BillboardCheckBox.Checked) {
+                if (!Do_billboard_work()) return;
+            }
+            if (StatueCheckBox.Checked) {
+                if (!Do_statue_work()) return;
+            }
+            if (DecalsCheckBox.Checked) {
+                if (!Do_decal_work()) return;
+            }
+            if (FlaggersCheckBox.Checked) {
+                if (!Do_flagger_work()) return;
+            }
+            if (TimingGateCheckBox.Checked) {
+                if (!Do_timing_gate_work()) return;
+            }
 
             ChangeLabel(progressLabel, Color.Green, "Success!");
 
@@ -282,41 +308,410 @@ namespace MX_Simulator_Track_Scaler
                         "Either delete the file in the application directory or select the file in the application directory.");
                     return false;
                 }
-                File.Delete(Environment.CurrentDirectory + "\\terrain.hf");
+                if (File.Exists(Environment.CurrentDirectory + "\\terrain_old.hf")) {
+                    File.Delete(Environment.CurrentDirectory + "\\terrain_old.hf");
+                }
+                File.Move(Environment.CurrentDirectory + "\\terrain.hf", Environment.CurrentDirectory + "\\terrain_old.hf");
             }
             // Open the temp file
-            temp_file = File.CreateText(Environment.CurrentDirectory + "\\replace.tmp");
+            temp_file = File.CreateText(temp_file_dir);
+
             // write to the file and close as we're done writing
             temp_file.WriteLine(terrain_scale_num.ToString() + ' ' + 
                 scalar_output.ToString() + ' ' + min.ToString() + ' ' + max.ToString());
             temp_file.Close();
 
             // Rename the file to terrain.hf
-            File.Move(Environment.CurrentDirectory + "\\replace.tmp", Environment.CurrentDirectory + "\\terrain.hf");
+            File.Move(temp_file_dir, Environment.CurrentDirectory + "\\terrain.hf");
             
             // Step the progress bar and return
             progressBar.PerformStep();
             return true;
         }
 
-        private void Do_billboard_work() {
-            billboards_file.Close();
+        private bool Do_billboard_work() {
+
+            ChangeLabel(progressLabel, Color.Black, "Scaling Billboards...");
+
+            temp_file = File.CreateText(temp_file_dir);
+            while (billboards_file.EndOfStream == false) {
+                // Read the line, split it into an array
+                string line = billboards_file.ReadLine();
+                string[] args = line.Split(' ');
+
+                // if the format is not in billboards format throw error
+                if (line == null || (line[0] != '[' && line[0] != '\n') || !args[2].Contains("]") || args.Length != 6) {
+                    Parse_Error("Billboards");
+                    return false;
+                }
+
+                // replace brackets
+                args[0] = args[0].Replace("[", string.Empty);
+                args[2] = args[2].Replace("]", string.Empty);
+
+                // parse coords and sizes
+                if (!decimal.TryParse(args[0], out decimal x)) {
+                    Parse_Error("Billboards");
+                    return false;
+                }
+                if (!decimal.TryParse(args[1], out decimal y)) {
+                    Parse_Error("Billboards");
+                    return false;
+                }
+                if (!decimal.TryParse(args[2], out decimal z)) {
+                    Parse_Error("Billboards");
+                    return false;
+                }
+                if (!decimal.TryParse(args[3], out decimal size)) {
+                    Parse_Error("Billboards");
+                    return false;
+                }
+
+                string aspect = args[4];
+                string png = args[5];
+
+                // calculate new coords / size
+                decimal[] coords = Get_Coords(x, y ,z);
+                decimal new_size = size * multiplier;
+
+                // write to file
+                temp_file.WriteLine('[' + coords[0].ToString() + ' ' + coords[1].ToString() + ' ' + coords[2] + "] " +
+                    new_size.ToString() + ' ' + aspect + ' ' + png);
+
+                // step the progress bar
+                progressBar.PerformStep();
+
+            }
+
+            // move the current file to an old file, the move the temp file to the new file
+            Move_Temp_File("billboards", billboards_file);
+
+            return true;
         }
 
-        private void Do_statue_work() {
-            statues_file.Close();
+        private bool Do_statue_work() {
+            ChangeLabel(progressLabel, Color.Black, "Scaling Statues...");
+
+            temp_file = File.CreateText(temp_file_dir);
+            while (statues_file.EndOfStream == false) {
+                // Read the line, split it into an array
+                string line = statues_file.ReadLine();
+                string[] args = line.Split(' ');
+
+                // if the format is not in statues format throw error
+                if (line == null || (line[0] != '[' && line[0] != '\n') || !args[2].Contains("]") || args.Length != 7) {
+                    Parse_Error("Statues");
+                    return false;
+                }
+
+                // replace brackets
+                args[0] = args[0].Replace("[", string.Empty);
+                args[2] = args[2].Replace("]", string.Empty);
+
+                // parse coords and sizes
+                if (!decimal.TryParse(args[0], out decimal x)) {
+                    Parse_Error("Statues");
+                    return false;
+                }
+                if (!decimal.TryParse(args[1], out decimal y)) {
+                    Parse_Error("Statues");
+                    return false;
+                }
+                if (!decimal.TryParse(args[2], out decimal z)) {
+                    Parse_Error("Statues");
+                    return false;
+                }
+
+                string angle = args[3];
+                string jm = args[4];
+                string png = args[5];
+                string shp = args[6];
+
+                // calculate new coords
+                decimal[] coords = Get_Coords(x, y, z);
+
+                // write to file
+                temp_file.WriteLine('[' + coords[0].ToString() + ' ' + coords[1].ToString() + ' ' + coords[2].ToString() + "] " +
+                    angle + ' ' + jm + ' ' + png + ' ' + shp);
+
+                // step the progress bar
+                progressBar.PerformStep();
+
+            }
+
+            Move_Temp_File("statues", statues_file);
+
+            return true;
         }
 
-        private void Do_decal_work() {
-            decals_file.Close();
+        private bool Do_decal_work() {
+            ChangeLabel(progressLabel, Color.Black, "Scaling Decals...");
+
+            temp_file = File.CreateText(temp_file_dir);
+            while (decals_file.EndOfStream == false) {
+
+                // Read the line, split it into an array
+                string line = decals_file.ReadLine();
+                string[] args = line.Split(' ');
+
+                // if the format is not in decals throw error
+                if (line == null || (line[0] != '[' && line[0] != '\n') || !args[1].Contains("]") || args.Length != 6) {
+                    Parse_Error("Decals");
+                    return false;
+                }
+                // replace brackets
+                args[0] = args[0].Replace("[", string.Empty);
+                args[1] = args[1].Replace("]", string.Empty);
+
+                if (!decimal.TryParse(args[0], out decimal x)) {
+                    Parse_Error("Decals");
+                    return false;
+                }
+
+                if (!decimal.TryParse(args[1], out decimal z)) {
+                    Parse_Error("Decals");
+                    return false;
+                }
+
+                string angle = args[2];
+                if (!decimal.TryParse(args[3], out decimal size)) {
+                    Parse_Error("Decals");
+                    return false;
+                }
+                string aspect = args[4];
+                string png = args[5];
+
+                // new coords / sizes
+                decimal[] coords = Get_Coords(x, 0, z);
+                decimal new_size = size * multiplier;
+
+                temp_file.WriteLine('[' + coords[0].ToString() + ' ' + coords[2].ToString() + "] " + angle +  ' ' +
+                    new_size.ToString() + ' ' + aspect + ' ' + png);
+
+                // step the progress bar
+                progressBar.PerformStep();
+
+            }
+
+            Move_Temp_File("decals", decals_file);
+            return true;
         }
 
-        private void Do_flagger_work() {
-            flaggers_file.Close();
+        private bool Do_flagger_work() {
+            ChangeLabel(progressLabel, Color.Black, "Scaling Flaggers...");
+
+            temp_file = File.CreateText(temp_file_dir);
+            while (flaggers_file.EndOfStream == false) {
+                string line = flaggers_file.ReadLine();
+                if (line == string.Empty || line[0] != '[') {
+                    temp_file.WriteLine(line);
+                    progressBar.PerformStep();
+                    continue;
+                }
+                string[] args = line.Split(' ');
+
+                if (args.Length != 3 || !args[0].Contains("[") || !args[2].Contains("]")) {
+                    Parse_Error("Flaggers");
+                    return false;
+                }
+
+                // replace brackets
+                args[0] = args[0].Replace("[", string.Empty);
+                args[2] = args[2].Replace("]", string.Empty);
+
+                // Parse coords
+                if (!decimal.TryParse(args[0], out decimal x)) {
+                    Parse_Error("Flaggers");
+                    return false;
+                }
+                if (!decimal.TryParse(args[1], out decimal y)) {
+                    Parse_Error("Flaggers");
+                    return false;
+                }
+                if (!decimal.TryParse(args[2], out decimal z)) {
+                    Parse_Error("Flaggers");
+                    return false;
+                }
+
+                // calculate new coords
+                decimal[] coords = Get_Coords(x, y, z);
+
+                // write to file
+                temp_file.WriteLine('[' + coords[0].ToString() + ' ' + coords[1].ToString() + ' ' + coords[2].ToString() + ']');
+
+                // step the progress bar
+                progressBar.PerformStep();
+            }
+
+            Move_Temp_File("flaggers", flaggers_file);
+            return true;
         }
 
-        private void Do_timing_gate_work() {
-            timing_gates_file.Close();
+        private bool Do_timing_gate_work() {
+            ChangeLabel(progressLabel, Color.Black, "Scaling Timing Gates...");
+
+            temp_file = File.CreateText(temp_file_dir);
+            int timing_gate_num = 0;
+            while (timing_gates_file.EndOfStream == false) {
+                string line = timing_gates_file.ReadLine();
+
+                if (line == "startinggate:") {
+                    temp_file.WriteLine(line);
+                    progressBar.PerformStep();
+                    continue;
+                }
+                if (line == "checkpoints:") {
+                    temp_file.WriteLine(line);
+                    timing_gate_num = 1;
+                    progressBar.PerformStep();
+                    continue;
+                }
+
+                if (line == "firstlap:") timing_gate_num = 2;
+
+                string[] args = line.Split(' ');
+
+                // Do First Segment
+                if (timing_gate_num == 0) {
+                    // Check lines to make sure they're valid
+                    if (line == null || args.Length < 4 || (line[0] != '[' && line[0] != '\n') || !args[2].Contains("]")) {
+                        Parse_Error("Timing Gates");
+                        return false;
+                    }
+
+                    args[0] = args[0].Replace("[", string.Empty);
+                    args[2] = args[2].Replace("]", string.Empty);
+                    
+                    // parse coords and get angle
+                    if (!decimal.TryParse(args[0], out decimal x)) {
+                        Parse_Error("Timing Gates");
+                        return false;
+                    }
+                    if (!decimal.TryParse(args[1], out decimal y)) {
+                        Parse_Error("Timing Gates");
+                        return false;
+                    }
+                    if (!decimal.TryParse(args[2], out decimal z)) {
+                        Parse_Error("Timing Gates");
+                        return false;
+                    }
+                    
+                    string angle = args[3];
+
+                    // calculate new coords
+                    decimal[] coords = Get_Coords(x, y, z);
+
+                    // set default outline
+                    string out_line = '[' + coords[0].ToString() + ' ' + coords[1].ToString() + ' ' 
+                        + coords[2].ToString() + "] " + angle;
+
+                    // if they have jm, png, and shp add it
+                    if (args.Length == 7) {
+                        string jm = args[4];
+                        string png = args[5];
+                        string shp = args[6];
+                        out_line += ' ' + jm + ' ' + png + ' ' + shp;
+                    }
+
+                    temp_file.WriteLine(out_line);
+
+                }
+                // Do Second Segment
+                else if (timing_gate_num == 1) {
+
+                    // Check lines to make sure they're valid
+                    if (line == null || args.Length != 7 || !args[1].Contains("[") || !args[3].Contains("]")
+                        || !args[4].Contains("[") || !args[6].Contains("]")) {
+                        Parse_Error("Timing Gates");
+                        return false;
+                    }
+
+                    // Replace Brackets
+                    args[1] = args[1].Replace("[", string.Empty);
+                    args[3] = args[3].Replace("]", string.Empty);
+                    args[4] = args[4].Replace("[", string.Empty);
+                    args[6] = args[6].Replace("]", string.Empty);
+
+                    // Parse size and coords into variables
+                    if (!decimal.TryParse(args[0], out decimal size)) {
+                        Parse_Error("Timing Gates");
+                        return false;
+                    }
+                    if (!decimal.TryParse(args[1], out decimal x1)) {
+                        Parse_Error("Timing Gates");
+                        return false;
+                    }
+                    if (!decimal.TryParse(args[2], out decimal y1)) {
+                        Parse_Error("Timing Gates");
+                        return false;
+                    }
+                    if (!decimal.TryParse(args[3], out decimal z1)) {
+                        Parse_Error("Timing Gates");
+                        return false;
+                    }
+                    if (!decimal.TryParse(args[4], out decimal x2)) {
+                        Parse_Error("Timing Gates");
+                        return false;
+                    }
+                    if (!decimal.TryParse(args[5], out decimal y2)) {
+                        Parse_Error("Timing Gates");
+                        return false;
+                    }
+                    if (!decimal.TryParse(args[6], out decimal z2)) {
+                        Parse_Error("Timing Gates");
+                        return false;
+                    }
+
+                    // Calculate new size & coords
+                    decimal new_size = size * multiplier;
+                    decimal[] coords1 = Get_Coords(x1, y1, z1);
+                    decimal[] coords2 = Get_Coords(x2, y2, z2);
+
+                    // Write to file
+                    temp_file.WriteLine(new_size.ToString() + " [" + coords1[0].ToString() + ' ' + coords1[1].ToString()
+                        + ' ' + coords1[2].ToString() + "] [" + coords2[0].ToString() + ' ' +
+                        coords2[1].ToString() + ' ' + coords2[2].ToString() + ']');
+
+
+                }
+                // Do Final Segment
+                else temp_file.WriteLine(line);
+
+                // step the progress bar
+                progressBar.PerformStep();
+            }
+
+            Move_Temp_File("timing_gates", timing_gates_file);
+            return true;
+        }
+
+        private void Parse_Error (string filename) {
+            ChangeLabel(fileCheckErrLabel, Color.Red, "Error: Incompatible " + filename +  " File");
+            temp_file.Close();
+            progressBar.Visible = false;
+            ChangeLabel(progressLabel, Color.Red, "Failed!");
+        }
+
+        private decimal[] Get_Coords (decimal x, decimal y, decimal z) {
+            decimal[] coords = new decimal[3];
+            coords[0] = x * multiplier;
+            coords[1] = y * multiplier;
+            coords[2] = z * multiplier;
+            return coords;
+        }
+
+        private void Move_Temp_File(string filename, StreamReader file_to_close) {
+            // move the current file to an old file, the move the temp file to the new file
+            if (File.Exists(Environment.CurrentDirectory + '\\' + filename + "_old")) {
+                File.Delete(Environment.CurrentDirectory + '\\' + filename + "_old");
+            }
+
+            // Close the files before moving
+            file_to_close.Close();
+            temp_file.Close();
+
+            File.Move(Environment.CurrentDirectory + '\\' + filename, Environment.CurrentDirectory + '\\' + filename + "_old");
+            File.Move(temp_file_dir, Environment.CurrentDirectory + '\\' + filename);
         }
     }
 }

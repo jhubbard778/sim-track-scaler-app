@@ -88,7 +88,7 @@
             this.FilesGroupBox.Controls.Add(this.StatueCheckBox);
             this.FilesGroupBox.Controls.Add(this.BillboardCheckBox);
             this.FilesGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FilesGroupBox.Location = new System.Drawing.Point(178, 90);
+            this.FilesGroupBox.Location = new System.Drawing.Point(165, 88);
             this.FilesGroupBox.Name = "FilesGroupBox";
             this.FilesGroupBox.Size = new System.Drawing.Size(249, 112);
             this.FilesGroupBox.TabIndex = 3;
@@ -169,7 +169,7 @@
             this.MethodGroupBox.Controls.Add(this.ToFactorRadioButton);
             this.MethodGroupBox.Controls.Add(this.ByFactorRadioButton);
             this.MethodGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MethodGroupBox.Location = new System.Drawing.Point(170, 283);
+            this.MethodGroupBox.Location = new System.Drawing.Point(168, 283);
             this.MethodGroupBox.Name = "MethodGroupBox";
             this.MethodGroupBox.Size = new System.Drawing.Size(232, 100);
             this.MethodGroupBox.TabIndex = 13;
@@ -218,7 +218,7 @@
             this.scaleErrLabel.AutoSize = true;
             this.scaleErrLabel.BackColor = System.Drawing.Color.Transparent;
             this.scaleErrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scaleErrLabel.Location = new System.Drawing.Point(382, 419);
+            this.scaleErrLabel.Location = new System.Drawing.Point(372, 419);
             this.scaleErrLabel.Name = "scaleErrLabel";
             this.scaleErrLabel.Size = new System.Drawing.Size(45, 16);
             this.scaleErrLabel.TabIndex = 17;
@@ -229,7 +229,7 @@
             this.methodErrLabel.AutoSize = true;
             this.methodErrLabel.BackColor = System.Drawing.Color.Transparent;
             this.methodErrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.methodErrLabel.Location = new System.Drawing.Point(408, 321);
+            this.methodErrLabel.Location = new System.Drawing.Point(408, 328);
             this.methodErrLabel.Name = "methodErrLabel";
             this.methodErrLabel.Size = new System.Drawing.Size(45, 16);
             this.methodErrLabel.TabIndex = 15;
@@ -249,7 +249,7 @@
             // ScaleButton
             // 
             this.ScaleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ScaleButton.Location = new System.Drawing.Point(210, 402);
+            this.ScaleButton.Location = new System.Drawing.Point(205, 402);
             this.ScaleButton.Name = "ScaleButton";
             this.ScaleButton.Size = new System.Drawing.Size(158, 47);
             this.ScaleButton.TabIndex = 15;
@@ -265,6 +265,7 @@
             // 
             this.progressBar.Location = new System.Drawing.Point(111, 465);
             this.progressBar.Name = "progressBar";
+            this.progressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.progressBar.Size = new System.Drawing.Size(361, 29);
             this.progressBar.TabIndex = 18;
             this.progressBar.Visible = false;
