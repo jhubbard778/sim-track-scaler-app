@@ -102,6 +102,7 @@ namespace MX_Simulator_Track_Scaler
 
                 // Reset progress label error if the user selects new terrain.hf
                 progressLabel.ResetText();
+                progressBar.Visible = false;
 
                 terrain_filepath = terrainFileOpenDialog.FileName;
 
@@ -232,8 +233,8 @@ namespace MX_Simulator_Track_Scaler
             // Set up Progress Bar
             progressBar.Minimum = 0;
             progressBar.Maximum = total_lines;
-            progressBar.ForeColor = Color.FromArgb(186, 99, 2);
-            progressBar.BackColor = Color.FromArgb(30, 30, 30);
+            progressBar.ForeColor = Color.FromArgb(186, 79, 2);
+            progressBar.BackColor = Color.FromArgb(227, 177, 118);
             progressBar.Visible = true;
             progressBar.Value = 0;
             progressBar.Step = 1;
