@@ -31,6 +31,7 @@ namespace MX_Simulator_Track_Scaler
         StreamReader timing_gates_file;
         StreamWriter temp_file;
         readonly string temp_file_dir = Environment.CurrentDirectory + "\\replace.tmp";
+        readonly string old_folder_dir = Environment.CurrentDirectory + "\\old files";
 
         // Scalar and Multiplier
         decimal scalar_input;
@@ -261,6 +262,11 @@ namespace MX_Simulator_Track_Scaler
                 multiplier = scalar_input / terrain_scale;
             }
 
+            // Create Folder to hold old files
+            if (!System.IO.Directory.Exists(old_folder_dir)) {
+                System.IO.Directory.CreateDirectory(old_folder_dir);
+            }
+
             if (terrainCheckBox.Checked) {
                 if (!Do_terrain_work()) return;
             }
@@ -336,10 +342,12 @@ namespace MX_Simulator_Track_Scaler
                     progressLabel.Location = new Point(15, 474);
                     return false;
                 }
-                if (File.Exists(Environment.CurrentDirectory + "\\terrain_old.hf")) {
-                    File.Delete(Environment.CurrentDirectory + "\\terrain_old.hf");
+                // If a file exists in the old folder directory, delete it
+                if (File.Exists(old_folder_dir + "\\terrain.hf")) {
+                    File.Delete(old_folder_dir + "\\terrain.hf");
                 }
-                File.Move(Environment.CurrentDirectory + "\\terrain.hf", Environment.CurrentDirectory + "\\terrain_old.hf");
+                // Move the terrain.hf to the old folder directory
+                File.Move(Environment.CurrentDirectory + "\\terrain.hf", old_folder_dir + "\\terrain.hf");
             }
             // Open the temp file
             temp_file = File.CreateText(temp_file_dir);
@@ -749,15 +757,15 @@ namespace MX_Simulator_Track_Scaler
 
         private void Move_Temp_File(string filename, StreamReader file_to_close) {
             // move the current file to an old file, the move the temp file to the new file
-            if (File.Exists(Environment.CurrentDirectory + '\\' + filename + "_old")) {
-                File.Delete(Environment.CurrentDirectory + '\\' + filename + "_old");
+            if (File.Exists(old_folder_dir + '\\' + filename)) {
+                File.Delete(old_folder_dir + '\\' + filename);
             }
 
             // Close the files before moving
             file_to_close.Close();
             temp_file.Close();
 
-            File.Move(Environment.CurrentDirectory + '\\' + filename, Environment.CurrentDirectory + '\\' + filename + "_old");
+            File.Move(Environment.CurrentDirectory + '\\' + filename, old_folder_dir + '\\' + filename);
             File.Move(temp_file_dir, Environment.CurrentDirectory + '\\' + filename);
         }
     }
