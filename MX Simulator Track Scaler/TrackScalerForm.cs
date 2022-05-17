@@ -185,6 +185,8 @@ namespace MX_Simulator_Track_Scaler
                 return;
             }
 
+            // Check to make sure files weren't deleted in the process
+            if (!Check_Terrain()) return;
             if (!CheckBox_ErrHandling(BillboardCheckBox, "billboards")) return;
             if (!CheckBox_ErrHandling(StatueCheckBox, "statues")) return;
             if (!CheckBox_ErrHandling(DecalsCheckBox, "decals")) return;
@@ -292,6 +294,15 @@ namespace MX_Simulator_Track_Scaler
             bool pass = true;
             if (box.Checked && !File.Exists(Environment.CurrentDirectory + '\\' + filename)) {
                 ChangeLabel(fileCheckErrLabel, Color.Red, "Error: " + filename + " does not exist in application directory!");
+                pass = false;
+            }
+            return pass;
+        }
+
+        private bool Check_Terrain() {
+            bool pass = true;
+            if (!File.Exists(terrain_filepath)) {
+                ChangeLabel(filenameLabel, Color.Red, "Error: terrain file does not exist anymore!");
                 pass = false;
             }
             return pass;
