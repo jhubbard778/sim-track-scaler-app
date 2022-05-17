@@ -18,4 +18,4 @@ Application that allows you to scale tracks to your liking, with options for eit
 ## Notes
 1. Statues whose objects origin points aren't at the 'ideal' center of an object will more than likely be moved incorrectly.  In the case that you have a few objects like this, you'll have to manually move them.
 2. You cannot scale jm's of objects, so all objects will remain the same size.
-3. Javascript objects with hardcoded coordinates will not be moved.
+3. Javascript objects that move with hardcoded coordinates will not be moved.
