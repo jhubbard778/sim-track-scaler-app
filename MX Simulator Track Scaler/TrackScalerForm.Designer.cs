@@ -139,7 +139,7 @@
             this.TimingGateCheckBox.AutoSize = true;
             this.TimingGateCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.TimingGateCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimingGateCheckBox.Location = new System.Drawing.Point(91, 56);
+            this.TimingGateCheckBox.Location = new System.Drawing.Point(91, 82);
             this.TimingGateCheckBox.Name = "TimingGateCheckBox";
             this.TimingGateCheckBox.Size = new System.Drawing.Size(107, 20);
             this.TimingGateCheckBox.TabIndex = 8;
@@ -152,7 +152,7 @@
             this.FlaggersCheckBox.BackColor = System.Drawing.Color.Transparent;
             this.FlaggersCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FlaggersCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FlaggersCheckBox.Location = new System.Drawing.Point(91, 82);
+            this.FlaggersCheckBox.Location = new System.Drawing.Point(91, 56);
             this.FlaggersCheckBox.Name = "FlaggersCheckBox";
             this.FlaggersCheckBox.Size = new System.Drawing.Size(81, 20);
             this.FlaggersCheckBox.TabIndex = 7;
