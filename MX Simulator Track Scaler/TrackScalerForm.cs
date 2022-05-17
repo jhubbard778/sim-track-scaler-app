@@ -59,7 +59,6 @@ namespace MX_Simulator_Track_Scaler
             fileErrLabel.ResetText();
             fileCheckErrLabel.ResetText();
             methodErrLabel.ResetText();
-            scaleErrLabel.ResetText();
             progressLabel.ResetText();
             userInputErrLabel.ResetText();
             filenameLabel.ResetText();
@@ -101,11 +100,18 @@ namespace MX_Simulator_Track_Scaler
 
             if (terrainFileOpenDialog.ShowDialog() == DialogResult.OK) {
 
+                // Reset progress label error if the user selects new terrain.hf
+                progressLabel.ResetText();
+
                 terrain_filepath = terrainFileOpenDialog.FileName;
 
                 // We need to check to make sure it's a terrain.hf file
                 terrain_file = File.OpenText(terrain_filepath);
                 
+                if (terrain_file.EndOfStream) {
+                    ChangeLabel(fileErrLabel, Color.Red, "Error: File Incompatible");
+                    return;
+                }
 
                 string line = terrain_file.ReadLine();
                 string[] args = line.Split(' ');
@@ -130,8 +136,7 @@ namespace MX_Simulator_Track_Scaler
                 decimal.TryParse(args[2], out min_height);
                 decimal.TryParse(args[3], out max_height);
 
-                filenameLabel.Text = terrain_filepath;
-                filenameLabel.TextAlign = ContentAlignment.MiddleCenter;
+                ChangeLabel(filenameLabel, Color.FromArgb(189, 193, 198), terrain_filepath);
                 terrain_opened = true;
                 // Close the terrain file, reset any error messages
                 terrain_file.Close();
@@ -163,6 +168,12 @@ namespace MX_Simulator_Track_Scaler
                 return;
             }
 
+            if (!BillboardCheckBox.Checked && !StatueCheckBox.Checked && !DecalsCheckBox.Checked
+                && !FlaggersCheckBox.Checked && !TimingGateCheckBox.Checked && !terrainCheckBox.Checked) {
+                ChangeLabel(fileCheckErrLabel, Color.Red, "No Files to Scale!");
+                return;
+            }
+
             if (UserInputTextBox.Text == string.Empty) {
                 ChangeLabel(userInputErrLabel, Color.Red, "Error: Enter a scale/factor");
                 return;
@@ -179,13 +190,6 @@ namespace MX_Simulator_Track_Scaler
             if (!CheckBox_ErrHandling(FlaggersCheckBox, "flaggers")) return;
             if (!CheckBox_ErrHandling(TimingGateCheckBox, "timing_gates")) return;
 
-
-            if (!BillboardCheckBox.Checked && !StatueCheckBox.Checked && !DecalsCheckBox.Checked
-                && !FlaggersCheckBox.Checked && !TimingGateCheckBox.Checked && !terrainCheckBox.Checked) {
-                ChangeLabel(fileCheckErrLabel, Color.Red, "No Files to Scale!");
-                return;
-            }
-
             /*
             ###################################
             Get Total Lines & Set Streamreaders
@@ -197,31 +201,39 @@ namespace MX_Simulator_Track_Scaler
 
             if (terrainCheckBox.Checked) total_lines++;
 
+            // Open the files, get the line count, close the files
             if (BillboardCheckBox.Checked) {
                 billboards_file = File.OpenText(Environment.CurrentDirectory + "\\billboards");
                 total_lines += File.ReadLines(Environment.CurrentDirectory + "\\billboards").Count();
+                billboards_file.Close();
             }
             if (StatueCheckBox.Checked) { 
                 statues_file = File.OpenText(Environment.CurrentDirectory + "\\statues");
                 total_lines += File.ReadLines(Environment.CurrentDirectory + "\\statues").Count();
+                statues_file.Close();
             }
             if (DecalsCheckBox.Checked) { 
                 decals_file = File.OpenText(Environment.CurrentDirectory + "\\decals");
                 total_lines += File.ReadLines(Environment.CurrentDirectory + "\\decals").Count();
+                decals_file.Close();
             }
             if (FlaggersCheckBox.Checked){ 
                 flaggers_file = File.OpenText(Environment.CurrentDirectory + "\\flaggers");
                 total_lines += File.ReadLines(Environment.CurrentDirectory + "\\flaggers").Count();
+                flaggers_file.Close();
             }
             if (TimingGateCheckBox.Checked) { 
                 timing_gates_file = File.OpenText(Environment.CurrentDirectory + "\\timing_gates");
                 total_lines += File.ReadLines(Environment.CurrentDirectory + "\\timing_gates").Count();
+                timing_gates_file.Close();
             }
 
 
             // Set up Progress Bar
             progressBar.Minimum = 0;
             progressBar.Maximum = total_lines;
+            progressBar.ForeColor = Color.FromArgb(186, 99, 2);
+            progressBar.BackColor = Color.FromArgb(30, 30, 30);
             progressBar.Visible = true;
             progressBar.Value = 0;
             progressBar.Step = 1;
@@ -250,7 +262,7 @@ namespace MX_Simulator_Track_Scaler
                 if (!Do_terrain_work()) return;
             }
             else {
-                ChangeLabel(fileCheckErrLabel, Color.Black, "Warning: multiple scalings without changing terrain can cause issues");
+                ChangeLabel(fileCheckErrLabel, Color.FromArgb(189, 193, 198), "Warning: multiple scalings without changing terrain can cause incorrect outputs");
             }
 
 
@@ -270,7 +282,8 @@ namespace MX_Simulator_Track_Scaler
                 if (!Do_timing_gate_work()) return;
             }
 
-            ChangeLabel(progressLabel, Color.Green, "Success!");
+            progressLabel.Location = new Point(15, 515);
+            ChangeLabel(progressLabel, Color.FromArgb(189, 193, 198), "Success!");
 
         }
 
@@ -291,7 +304,7 @@ namespace MX_Simulator_Track_Scaler
 
         private bool Do_terrain_work() {
 
-            ChangeLabel(progressLabel, Color.Black, "Scaling Terrain...");
+            ChangeLabel(progressLabel, Color.FromArgb(189, 193, 198), "Scaling Terrain...");
 
             decimal scalar_output = scalar_input;
             if (ByFactorRadioButton.Checked) {
@@ -306,6 +319,9 @@ namespace MX_Simulator_Track_Scaler
                 if (Environment.CurrentDirectory + "\\terrain.hf" != terrain_filepath) {
                     ChangeLabel(progressLabel, Color.Red, "There is a file in the application directory and you didn't select it.  " +
                         "Either delete the file in the application directory or select the file in the application directory.");
+                    progressBar.Visible = false;
+                    // Change the location
+                    progressLabel.Location = new Point(15, 474);
                     return false;
                 }
                 if (File.Exists(Environment.CurrentDirectory + "\\terrain_old.hf")) {
@@ -331,16 +347,22 @@ namespace MX_Simulator_Track_Scaler
 
         private bool Do_billboard_work() {
 
-            ChangeLabel(progressLabel, Color.Black, "Scaling Billboards...");
+            ChangeLabel(progressLabel, Color.FromArgb(189, 193, 198), "Scaling Billboards...");
 
+            // re-open the file
+            billboards_file = File.OpenText(Environment.CurrentDirectory + "\\billboards");
             temp_file = File.CreateText(temp_file_dir);
             while (billboards_file.EndOfStream == false) {
                 // Read the line, split it into an array
                 string line = billboards_file.ReadLine();
+                if (line == string.Empty) {
+                    progressBar.PerformStep();
+                    continue;
+                }
                 string[] args = line.Split(' ');
 
                 // if the format is not in billboards format throw error
-                if (line == null || (line[0] != '[' && line[0] != '\n') || !args[2].Contains("]") || args.Length != 6) {
+                if ((line[0] != '[' && line[0] != '\n') || !args[2].Contains("]") || args.Length != 6) {
                     Parse_Error("Billboards");
                     return false;
                 }
@@ -390,16 +412,22 @@ namespace MX_Simulator_Track_Scaler
         }
 
         private bool Do_statue_work() {
-            ChangeLabel(progressLabel, Color.Black, "Scaling Statues...");
+            ChangeLabel(progressLabel, Color.FromArgb(189, 193, 198), "Scaling Statues...");
 
+            statues_file = File.OpenText(Environment.CurrentDirectory + "\\statues");
             temp_file = File.CreateText(temp_file_dir);
             while (statues_file.EndOfStream == false) {
                 // Read the line, split it into an array
                 string line = statues_file.ReadLine();
+                if (line == string.Empty) {
+                    progressBar.PerformStep();
+                    continue;
+                }
+
                 string[] args = line.Split(' ');
 
                 // if the format is not in statues format throw error
-                if (line == null || (line[0] != '[' && line[0] != '\n') || !args[2].Contains("]") || args.Length != 7) {
+                if ((line[0] != '[' && line[0] != '\n') || !args[2].Contains("]") || args.Length != 7) {
                     Parse_Error("Statues");
                     return false;
                 }
@@ -445,17 +473,22 @@ namespace MX_Simulator_Track_Scaler
         }
 
         private bool Do_decal_work() {
-            ChangeLabel(progressLabel, Color.Black, "Scaling Decals...");
+            ChangeLabel(progressLabel, Color.FromArgb(189, 193, 198), "Scaling Decals...");
 
+            decals_file = File.OpenText(Environment.CurrentDirectory + "\\decals");
             temp_file = File.CreateText(temp_file_dir);
             while (decals_file.EndOfStream == false) {
 
                 // Read the line, split it into an array
                 string line = decals_file.ReadLine();
+                if (line == string.Empty) {
+                    progressBar.PerformStep();
+                    continue;
+                }
                 string[] args = line.Split(' ');
 
                 // if the format is not in decals throw error
-                if (line == null || (line[0] != '[' && line[0] != '\n') || !args[1].Contains("]") || args.Length != 6) {
+                if ((line[0] != '[' && line[0] != '\n') || !args[1].Contains("]") || args.Length != 6) {
                     Parse_Error("Decals");
                     return false;
                 }
@@ -498,8 +531,9 @@ namespace MX_Simulator_Track_Scaler
         }
 
         private bool Do_flagger_work() {
-            ChangeLabel(progressLabel, Color.Black, "Scaling Flaggers...");
+            ChangeLabel(progressLabel, Color.FromArgb(189, 193, 198), "Scaling Flaggers...");
 
+            flaggers_file = File.OpenText(Environment.CurrentDirectory + "\\flaggers");
             temp_file = File.CreateText(temp_file_dir);
             while (flaggers_file.EndOfStream == false) {
                 string line = flaggers_file.ReadLine();
@@ -548,8 +582,9 @@ namespace MX_Simulator_Track_Scaler
         }
 
         private bool Do_timing_gate_work() {
-            ChangeLabel(progressLabel, Color.Black, "Scaling Timing Gates...");
+            ChangeLabel(progressLabel, Color.FromArgb(189, 193, 198), "Scaling Timing Gates...");
 
+            timing_gates_file = File.OpenText(Environment.CurrentDirectory + "\\timing_gates");
             temp_file = File.CreateText(temp_file_dir);
             int timing_gate_num = 0;
             while (timing_gates_file.EndOfStream == false) {
@@ -574,7 +609,7 @@ namespace MX_Simulator_Track_Scaler
                 // Do First Segment
                 if (timing_gate_num == 0) {
                     // Check lines to make sure they're valid
-                    if (line == null || args.Length < 4 || (line[0] != '[' && line[0] != '\n') || !args[2].Contains("]")) {
+                    if (args.Length < 4 || (line[0] != '[' && line[0] != '\n') || !args[2].Contains("]")) {
                         Parse_Error("Timing Gates");
                         return false;
                     }
@@ -620,7 +655,7 @@ namespace MX_Simulator_Track_Scaler
                 else if (timing_gate_num == 1) {
 
                     // Check lines to make sure they're valid
-                    if (line == null || args.Length != 7 || !args[1].Contains("[") || !args[3].Contains("]")
+                    if (args.Length != 7 || !args[1].Contains("[") || !args[3].Contains("]")
                         || !args[4].Contains("[") || !args[6].Contains("]")) {
                         Parse_Error("Timing Gates");
                         return false;

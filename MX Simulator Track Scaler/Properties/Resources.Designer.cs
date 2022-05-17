@@ -59,5 +59,25 @@ namespace MX_Simulator_Track_Scaler.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cube_icon_kjijxo {
+            get {
+                object obj = ResourceManager.GetObject("cube_icon_kjijxo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap racing_flag_icon_race_checker_chequred_checkered_flag_tom_hill_transparent {
+            get {
+                object obj = ResourceManager.GetObject("racing-flag-icon-race-checker-chequred-checkered-flag-tom-hill-transparent", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

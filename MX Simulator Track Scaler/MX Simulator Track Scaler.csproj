@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="progressbar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TrackScalerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,9 +88,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="cube.ico" />
+    <None Include="Resources\racing-flag-icon-race-checker-chequred-checkered-flag-tom-hill-transparent.png" />
+    <None Include="Resources\cube_icon_kjijxo.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
