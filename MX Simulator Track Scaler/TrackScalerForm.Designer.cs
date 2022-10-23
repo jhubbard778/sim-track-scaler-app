@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrackScalerForm));
-            this.OpenTerrainButton = new System.Windows.Forms.Button();
+            this.OpenFolderButton = new System.Windows.Forms.Button();
             this.fileErrLabel = new System.Windows.Forms.Label();
             this.FilesGroupBox = new System.Windows.Forms.GroupBox();
             this.terrainCheckBox = new System.Windows.Forms.CheckBox();
@@ -46,7 +46,6 @@
             this.methodErrLabel = new System.Windows.Forms.Label();
             this.fileCheckErrLabel = new System.Windows.Forms.Label();
             this.ScaleButton = new System.Windows.Forms.Button();
-            this.terrainFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.UserInputTextBox = new System.Windows.Forms.TextBox();
             this.progressLabel = new System.Windows.Forms.Label();
             this.userInputErrLabel = new System.Windows.Forms.Label();
@@ -54,28 +53,29 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.progressBar = new QuantumConcepts.Common.Forms.UI.Controls.NewProgressBar();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.FilesGroupBox.SuspendLayout();
             this.MethodGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
-            // OpenTerrainButton
+            // OpenFolderButton
             // 
-            this.OpenTerrainButton.BackColor = System.Drawing.SystemColors.Control;
-            this.OpenTerrainButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.OpenTerrainButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.OpenTerrainButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.OpenTerrainButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.OpenTerrainButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OpenTerrainButton.ForeColor = System.Drawing.Color.Black;
-            this.OpenTerrainButton.Location = new System.Drawing.Point(238, 12);
-            this.OpenTerrainButton.Name = "OpenTerrainButton";
-            this.OpenTerrainButton.Size = new System.Drawing.Size(106, 31);
-            this.OpenTerrainButton.TabIndex = 0;
-            this.OpenTerrainButton.Text = "Choose terrain.hf";
-            this.OpenTerrainButton.UseVisualStyleBackColor = false;
-            this.OpenTerrainButton.Click += new System.EventHandler(this.OpenTerrainButton_Click);
+            this.OpenFolderButton.BackColor = System.Drawing.SystemColors.Control;
+            this.OpenFolderButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.OpenFolderButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.OpenFolderButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.OpenFolderButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.OpenFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OpenFolderButton.ForeColor = System.Drawing.Color.Black;
+            this.OpenFolderButton.Location = new System.Drawing.Point(238, 12);
+            this.OpenFolderButton.Name = "OpenFolderButton";
+            this.OpenFolderButton.Size = new System.Drawing.Size(106, 31);
+            this.OpenFolderButton.TabIndex = 0;
+            this.OpenFolderButton.Text = "Choose Folder";
+            this.OpenFolderButton.UseVisualStyleBackColor = false;
+            this.OpenFolderButton.Click += new System.EventHandler(this.OpenFolderButton_Click);
             // 
             // fileErrLabel
             // 
@@ -164,6 +164,7 @@
             this.DecalsCheckBox.AutoSize = true;
             this.DecalsCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DecalsCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DecalsCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(193)))), ((int)(((byte)(198)))));
             this.DecalsCheckBox.Location = new System.Drawing.Point(91, 30);
             this.DecalsCheckBox.Name = "DecalsCheckBox";
             this.DecalsCheckBox.Size = new System.Drawing.Size(70, 20);
@@ -275,7 +276,7 @@
             // 
             // ScaleButton
             // 
-            this.ScaleButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(99)))), ((int)(((byte)(2)))));
+            this.ScaleButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(126)))), ((int)(((byte)(2)))));
             this.ScaleButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ScaleButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ScaleButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(54)))), ((int)(((byte)(2)))));
@@ -290,10 +291,6 @@
             this.ScaleButton.Text = "Scale";
             this.ScaleButton.UseVisualStyleBackColor = false;
             this.ScaleButton.Click += new System.EventHandler(this.ScaleButton_Click);
-            // 
-            // terrainFileOpenDialog
-            // 
-            this.terrainFileOpenDialog.FileName = "terrain.hf";
             // 
             // UserInputTextBox
             // 
@@ -393,7 +390,7 @@
             this.Controls.Add(this.FilesGroupBox);
             this.Controls.Add(this.UserInputTextBox);
             this.Controls.Add(this.fileErrLabel);
-            this.Controls.Add(this.OpenTerrainButton);
+            this.Controls.Add(this.OpenFolderButton);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -413,7 +410,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button OpenTerrainButton;
+        private System.Windows.Forms.Button OpenFolderButton;
         private System.Windows.Forms.Label fileErrLabel;
         private System.Windows.Forms.GroupBox FilesGroupBox;
         private System.Windows.Forms.GroupBox MethodGroupBox;
@@ -429,7 +426,6 @@
         private System.Windows.Forms.Label methodErrLabel;
         private System.Windows.Forms.Label fileCheckErrLabel;
         private System.Windows.Forms.Button ScaleButton;
-        private System.Windows.Forms.OpenFileDialog terrainFileOpenDialog;
         private System.Windows.Forms.TextBox UserInputTextBox;
         private System.Windows.Forms.Label progressLabel;
         private System.Windows.Forms.Label userInputErrLabel;
@@ -438,6 +434,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private QuantumConcepts.Common.Forms.UI.Controls.NewProgressBar progressBar;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
     }
 }
 
