@@ -6,12 +6,11 @@ Application that allows you to scale tracks to your liking, with options for eit
 2. Start MX Simulator Track Scaler.exe
 
 # Usage
-1. Move all files you'd like to scale into the same directory as the application
-2. Choose a terrain.hf file
-3. Select all files that you would like to scale
-4. Enter a decimal or integer number into the textbox
-5. Choose whether you'd like the number you entered to be a multiplier or a new terrain.hf scale
-6. Scale!
+1. Choose a folder
+2. Select all files that you would like to scale
+3. Enter a decimal or integer number into the textbox
+4. Choose whether you'd like the number you entered to be a multiplier or a new terrain.hf scale
+5. Scale!
 
 <br>
 
