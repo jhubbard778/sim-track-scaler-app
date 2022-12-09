@@ -29,6 +29,7 @@ namespace MX_Simulator_Track_Scaler
         StreamReader decals_file;
         StreamReader flaggers_file;
         StreamReader timing_gates_file;
+        StreamReader edinfoFile;
         StreamWriter temp_file;
         string temp_file_dir;
         string old_folder_dir;
@@ -76,6 +77,7 @@ namespace MX_Simulator_Track_Scaler
             FlaggersCheckBox.Checked = box_checked;
             TimingGateCheckBox.Checked = box_checked;
             terrainCheckBox.Checked = box_checked;
+            edinfoCheckbox.Checked = box_checked;
         }
 
         private void UserInputTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -142,7 +144,7 @@ namespace MX_Simulator_Track_Scaler
             }
 
             if (!BillboardCheckBox.Checked && !StatueCheckBox.Checked && !DecalsCheckBox.Checked
-                && !FlaggersCheckBox.Checked && !TimingGateCheckBox.Checked && !terrainCheckBox.Checked) {
+                && !FlaggersCheckBox.Checked && !TimingGateCheckBox.Checked && !terrainCheckBox.Checked && !edinfoCheckbox.Checked) {
                 ChangeLabel(fileCheckErrLabel, Color.Red, "No Files to Scale!");
                 return;
             }
@@ -164,6 +166,7 @@ namespace MX_Simulator_Track_Scaler
             if (!CheckBox_ErrHandling(DecalsCheckBox, "decals")) return;
             if (!CheckBox_ErrHandling(FlaggersCheckBox, "flaggers")) return;
             if (!CheckBox_ErrHandling(TimingGateCheckBox, "timing_gates")) return;
+            if (!CheckBox_ErrHandling(edinfoCheckbox, "edinfo")) return;
 
             /*
             ###################################
@@ -176,31 +179,24 @@ namespace MX_Simulator_Track_Scaler
 
             if (terrainCheckBox.Checked) total_lines++;
 
-            // Open the files, get the line count, close the files
+            // Get the line counts of each file
             if (BillboardCheckBox.Checked) {
-                billboards_file = File.OpenText(folderPath + "\\billboards");
                 total_lines += File.ReadLines(folderPath + "\\billboards").Count();
-                billboards_file.Close();
             }
             if (StatueCheckBox.Checked) { 
-                statues_file = File.OpenText(folderPath + "\\statues");
                 total_lines += File.ReadLines(folderPath + "\\statues").Count();
-                statues_file.Close();
             }
             if (DecalsCheckBox.Checked) { 
-                decals_file = File.OpenText(folderPath + "\\decals");
                 total_lines += File.ReadLines(folderPath + "\\decals").Count();
-                decals_file.Close();
             }
             if (FlaggersCheckBox.Checked){ 
-                flaggers_file = File.OpenText(folderPath + "\\flaggers");
                 total_lines += File.ReadLines(folderPath + "\\flaggers").Count();
-                flaggers_file.Close();
             }
             if (TimingGateCheckBox.Checked) { 
-                timing_gates_file = File.OpenText(folderPath + "\\timing_gates");
                 total_lines += File.ReadLines(folderPath + "\\timing_gates").Count();
-                timing_gates_file.Close();
+            }
+            if (edinfoCheckbox.Checked) {
+                total_lines += File.ReadLines(folderPath + "\\edinfo").Count();
             }
 
 
@@ -214,8 +210,7 @@ namespace MX_Simulator_Track_Scaler
             progressBar.Step = 1;
             
             // Parse the user input text box and output to scalar_input variable
-            if (!decimal.TryParse(UserInputTextBox.Text, out scalar_input))
-            {
+            if (!decimal.TryParse(UserInputTextBox.Text, out scalar_input)) {
                 ChangeLabel(userInputErrLabel, Color.Red, "Enter integer or decimal value.");
                 return;
             }
@@ -229,30 +224,18 @@ namespace MX_Simulator_Track_Scaler
             if (!System.IO.Directory.Exists(old_folder_dir)) {
                 System.IO.Directory.CreateDirectory(old_folder_dir);
             }
-
-            if (terrainCheckBox.Checked) {
-                if (!Do_terrain_work()) return;
-            }
-
-            if (BillboardCheckBox.Checked) {
-                if (!Do_billboard_work()) return;
-            }
-            if (StatueCheckBox.Checked) {
-                if (!Do_statue_work()) return;
-            }
-            if (DecalsCheckBox.Checked) {
-                if (!Do_decal_work()) return;
-            }
-            if (FlaggersCheckBox.Checked) {
-                if (!Do_flagger_work()) return;
-            }
-            if (TimingGateCheckBox.Checked) {
-                if (!Do_timing_gate_work()) return;
-            }
+            
+            // Do the main work
+            if (terrainCheckBox.Checked && !Do_terrain_work()) return;
+            if (BillboardCheckBox.Checked && !Do_billboard_work()) return;
+            if (StatueCheckBox.Checked && !Do_statue_work()) return;
+            if (DecalsCheckBox.Checked && !Do_decal_work()) return;
+            if (FlaggersCheckBox.Checked && !Do_flagger_work()) return;
+            if (TimingGateCheckBox.Checked && !Do_timing_gate_work()) return;
+            if (edinfoCheckbox.Checked && !Do_edinfo_work()) return;
 
             progressLabel.Location = new Point(15, 515);
             ChangeLabel(progressLabel, Color.FromArgb(189, 193, 198), "Success!");
-
         }
 
         private bool CheckBox_ErrHandling(CheckBox box, string filename) {
@@ -725,6 +708,85 @@ namespace MX_Simulator_Track_Scaler
             return true;
         }
 
+        private bool Do_edinfo_work() {
+            ChangeLabel(progressLabel, Color.FromArgb(189, 193, 198), "Scaling Gradients...");
+
+            edinfoFile = File.OpenText(folderPath + "\\edinfo");
+            temp_file = File.CreateText(temp_file_dir);
+
+            while (edinfoFile.EndOfStream == false) {
+                string line = edinfoFile.ReadLine();
+                string[] args = line.Split(' ');
+
+                if (args[0] == "add_gradient") {
+                    // Process gradient x and z points
+                    // add_gradient <start_x> <start_z> <end_x> <end_z>
+
+                    if (args.Length != 5) {
+                        Parse_Error("edinfo");
+                    }
+
+                    // Parse all information
+                    if (!decimal.TryParse(args[1], out decimal start_x)) {
+                        Parse_Error("edinfo");
+                        return false;
+                    }
+                    if (!decimal.TryParse(args[2], out decimal start_z)) {
+                        Parse_Error("edinfo");
+                        return false;
+                    }
+                    if (!decimal.TryParse(args[3], out decimal end_x)) {
+                        Parse_Error("edinfo");
+                        return false;
+                    }
+                    if (!decimal.TryParse(args[4], out decimal end_z)) {
+                        Parse_Error("edinfo");
+                        return false;
+                    }
+
+                    start_x *= multiplier;
+                    start_z *= multiplier;
+                    end_x *= multiplier;
+                    end_z *= multiplier;
+
+                    temp_file.WriteLine("add_gradient " + start_x.ToString() + ' ' + start_z.ToString() + ' ' + end_x.ToString() + ' ' + end_z.ToString());
+                }
+
+                else if (args[0] == "add_point") {
+                    // Process gradient points
+                    // add_point <0 linear, 1 curved> <distance from origin> <height>
+                    if (args.Length != 4) {
+                        Parse_Error("edinfo");
+                    }
+
+                    // Parse all information
+                    if (!int.TryParse(args[1], out int point_type)) {
+                        Parse_Error("edinfo");
+                        return false;
+                    }
+                    if (!decimal.TryParse(args[2], out decimal origin_distance)) {
+                        Parse_Error("edinfo");
+                        return false;
+                    }
+                    if (!decimal.TryParse(args[3], out decimal height)) {
+                        Parse_Error("edinfo");
+                        return false;
+                    }
+
+                    origin_distance *= multiplier;
+                    height *= multiplier;
+
+                    temp_file.WriteLine("add_point " + point_type.ToString() + ' ' + origin_distance.ToString() + ' ' + height.ToString());
+                }
+
+                progressBar.PerformStep();
+            }
+
+
+            Move_Temp_File("edinfo", edinfoFile);
+            return true;
+        }
+
         private void Parse_Error (string filename) {
             ChangeLabel(fileCheckErrLabel, Color.Red, "Error: Incompatible " + filename +  " File");
             temp_file.Close();
@@ -732,7 +794,7 @@ namespace MX_Simulator_Track_Scaler
             ChangeLabel(progressLabel, Color.Red, "Failed!");
         }
 
-        private decimal[] Get_Coords (decimal x, decimal y, decimal z) {
+        private decimal[] Get_Coords(decimal x, decimal y, decimal z) {
             decimal[] coords = new decimal[3];
             coords[0] = x * multiplier;
             coords[1] = y * multiplier;

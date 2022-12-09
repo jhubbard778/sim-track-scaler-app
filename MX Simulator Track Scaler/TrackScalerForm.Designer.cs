@@ -52,8 +52,9 @@
             this.filenameLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.progressBar = new QuantumConcepts.Common.Forms.UI.Controls.NewProgressBar();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.edinfoCheckbox = new System.Windows.Forms.CheckBox();
+            this.progressBar = new QuantumConcepts.Common.Forms.UI.Controls.NewProgressBar();
             this.FilesGroupBox.SuspendLayout();
             this.MethodGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -91,6 +92,7 @@
             // FilesGroupBox
             // 
             this.FilesGroupBox.BackColor = System.Drawing.Color.Transparent;
+            this.FilesGroupBox.Controls.Add(this.edinfoCheckbox);
             this.FilesGroupBox.Controls.Add(this.terrainCheckBox);
             this.FilesGroupBox.Controls.Add(this.AllCheckBox);
             this.FilesGroupBox.Controls.Add(this.TimingGateCheckBox);
@@ -126,7 +128,7 @@
             this.AllCheckBox.AutoSize = true;
             this.AllCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AllCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AllCheckBox.Location = new System.Drawing.Point(201, 56);
+            this.AllCheckBox.Location = new System.Drawing.Point(181, 56);
             this.AllCheckBox.Name = "AllCheckBox";
             this.AllCheckBox.Size = new System.Drawing.Size(42, 20);
             this.AllCheckBox.TabIndex = 9;
@@ -360,6 +362,19 @@
             this.pictureBox2.TabIndex = 25;
             this.pictureBox2.TabStop = false;
             // 
+            // edinfoCheckbox
+            // 
+            this.edinfoCheckbox.AutoSize = true;
+            this.edinfoCheckbox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.edinfoCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.edinfoCheckbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(193)))), ((int)(((byte)(198)))));
+            this.edinfoCheckbox.Location = new System.Drawing.Point(181, 30);
+            this.edinfoCheckbox.Name = "edinfoCheckbox";
+            this.edinfoCheckbox.Size = new System.Drawing.Size(65, 20);
+            this.edinfoCheckbox.TabIndex = 24;
+            this.edinfoCheckbox.Text = "Edinfo";
+            this.edinfoCheckbox.UseVisualStyleBackColor = true;
+            // 
             // progressBar
             // 
             this.progressBar.Location = new System.Drawing.Point(132, 475);
@@ -435,6 +450,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private QuantumConcepts.Common.Forms.UI.Controls.NewProgressBar progressBar;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.CheckBox edinfoCheckbox;
     }
 }
 
