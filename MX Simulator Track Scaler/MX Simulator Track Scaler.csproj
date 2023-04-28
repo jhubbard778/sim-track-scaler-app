@@ -36,6 +36,9 @@
     <ApplicationIcon>cube.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BetterFolderBrowser, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\BetterFolderBrowser.1.2.0\lib\BetterFolderBrowser.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -73,6 +76,7 @@
     <EmbeddedResource Include="TrackScalerForm.resx">
       <DependentUpon>TrackScalerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -88,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="cube.ico" />
+    <None Include="Resources\sticker.png" />
     <None Include="Resources\racing-flag-icon-race-checker-chequred-checkered-flag-tom-hill-transparent.png" />
     <None Include="Resources\cube_icon_kjijxo.png" />
   </ItemGroup>

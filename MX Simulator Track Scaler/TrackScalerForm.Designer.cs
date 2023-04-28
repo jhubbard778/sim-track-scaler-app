@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrackScalerForm));
             this.OpenFolderButton = new System.Windows.Forms.Button();
             this.fileErrLabel = new System.Windows.Forms.Label();
             this.FilesGroupBox = new System.Windows.Forms.GroupBox();
+            this.edinfoCheckbox = new System.Windows.Forms.CheckBox();
             this.terrainCheckBox = new System.Windows.Forms.CheckBox();
             this.AllCheckBox = new System.Windows.Forms.CheckBox();
             this.TimingGateCheckBox = new System.Windows.Forms.CheckBox();
@@ -50,15 +52,17 @@
             this.progressLabel = new System.Windows.Forms.Label();
             this.userInputErrLabel = new System.Windows.Forms.Label();
             this.filenameLabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.edinfoCheckbox = new System.Windows.Forms.CheckBox();
             this.progressBar = new QuantumConcepts.Common.Forms.UI.Controls.NewProgressBar();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.disableScaleYCheckBox = new System.Windows.Forms.CheckBox();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.FilesGroupBox.SuspendLayout();
             this.MethodGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // OpenFolderButton
@@ -70,7 +74,7 @@
             this.OpenFolderButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.OpenFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OpenFolderButton.ForeColor = System.Drawing.Color.Black;
-            this.OpenFolderButton.Location = new System.Drawing.Point(238, 12);
+            this.OpenFolderButton.Location = new System.Drawing.Point(19, 10);
             this.OpenFolderButton.Name = "OpenFolderButton";
             this.OpenFolderButton.Size = new System.Drawing.Size(106, 31);
             this.OpenFolderButton.TabIndex = 0;
@@ -83,9 +87,9 @@
             this.fileErrLabel.AutoSize = true;
             this.fileErrLabel.BackColor = System.Drawing.Color.Transparent;
             this.fileErrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fileErrLabel.Location = new System.Drawing.Point(352, 20);
+            this.fileErrLabel.Location = new System.Drawing.Point(141, 20);
             this.fileErrLabel.Name = "fileErrLabel";
-            this.fileErrLabel.Size = new System.Drawing.Size(45, 16);
+            this.fileErrLabel.Size = new System.Drawing.Size(44, 16);
             this.fileErrLabel.TabIndex = 1;
             this.fileErrLabel.Text = "label1";
             // 
@@ -102,12 +106,25 @@
             this.FilesGroupBox.Controls.Add(this.BillboardCheckBox);
             this.FilesGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FilesGroupBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(193)))), ((int)(((byte)(198)))));
-            this.FilesGroupBox.Location = new System.Drawing.Point(165, 70);
+            this.FilesGroupBox.Location = new System.Drawing.Point(19, 72);
             this.FilesGroupBox.Name = "FilesGroupBox";
             this.FilesGroupBox.Size = new System.Drawing.Size(249, 112);
             this.FilesGroupBox.TabIndex = 3;
             this.FilesGroupBox.TabStop = false;
             this.FilesGroupBox.Text = "Files To Scale";
+            // 
+            // edinfoCheckbox
+            // 
+            this.edinfoCheckbox.AutoSize = true;
+            this.edinfoCheckbox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.edinfoCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.edinfoCheckbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(193)))), ((int)(((byte)(198)))));
+            this.edinfoCheckbox.Location = new System.Drawing.Point(181, 30);
+            this.edinfoCheckbox.Name = "edinfoCheckbox";
+            this.edinfoCheckbox.Size = new System.Drawing.Size(64, 20);
+            this.edinfoCheckbox.TabIndex = 24;
+            this.edinfoCheckbox.Text = "Edinfo";
+            this.edinfoCheckbox.UseVisualStyleBackColor = true;
             // 
             // terrainCheckBox
             // 
@@ -118,7 +135,7 @@
             this.terrainCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.terrainCheckBox.Location = new System.Drawing.Point(6, 30);
             this.terrainCheckBox.Name = "terrainCheckBox";
-            this.terrainCheckBox.Size = new System.Drawing.Size(70, 20);
+            this.terrainCheckBox.Size = new System.Drawing.Size(69, 20);
             this.terrainCheckBox.TabIndex = 23;
             this.terrainCheckBox.Text = "Terrain";
             this.terrainCheckBox.UseVisualStyleBackColor = false;
@@ -130,7 +147,7 @@
             this.AllCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AllCheckBox.Location = new System.Drawing.Point(181, 56);
             this.AllCheckBox.Name = "AllCheckBox";
-            this.AllCheckBox.Size = new System.Drawing.Size(42, 20);
+            this.AllCheckBox.Size = new System.Drawing.Size(41, 20);
             this.AllCheckBox.TabIndex = 9;
             this.AllCheckBox.Text = "All";
             this.AllCheckBox.UseVisualStyleBackColor = true;
@@ -143,7 +160,7 @@
             this.TimingGateCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TimingGateCheckBox.Location = new System.Drawing.Point(91, 82);
             this.TimingGateCheckBox.Name = "TimingGateCheckBox";
-            this.TimingGateCheckBox.Size = new System.Drawing.Size(107, 20);
+            this.TimingGateCheckBox.Size = new System.Drawing.Size(106, 20);
             this.TimingGateCheckBox.TabIndex = 8;
             this.TimingGateCheckBox.Text = "Timing Gates";
             this.TimingGateCheckBox.UseVisualStyleBackColor = true;
@@ -156,7 +173,7 @@
             this.FlaggersCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FlaggersCheckBox.Location = new System.Drawing.Point(91, 56);
             this.FlaggersCheckBox.Name = "FlaggersCheckBox";
-            this.FlaggersCheckBox.Size = new System.Drawing.Size(81, 20);
+            this.FlaggersCheckBox.Size = new System.Drawing.Size(80, 20);
             this.FlaggersCheckBox.TabIndex = 7;
             this.FlaggersCheckBox.Text = "Flaggers";
             this.FlaggersCheckBox.UseVisualStyleBackColor = false;
@@ -169,7 +186,7 @@
             this.DecalsCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(193)))), ((int)(((byte)(198)))));
             this.DecalsCheckBox.Location = new System.Drawing.Point(91, 30);
             this.DecalsCheckBox.Name = "DecalsCheckBox";
-            this.DecalsCheckBox.Size = new System.Drawing.Size(70, 20);
+            this.DecalsCheckBox.Size = new System.Drawing.Size(69, 20);
             this.DecalsCheckBox.TabIndex = 6;
             this.DecalsCheckBox.Text = "Decals";
             this.DecalsCheckBox.UseVisualStyleBackColor = true;
@@ -181,7 +198,7 @@
             this.StatueCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatueCheckBox.Location = new System.Drawing.Point(6, 82);
             this.StatueCheckBox.Name = "StatueCheckBox";
-            this.StatueCheckBox.Size = new System.Drawing.Size(72, 20);
+            this.StatueCheckBox.Size = new System.Drawing.Size(71, 20);
             this.StatueCheckBox.TabIndex = 5;
             this.StatueCheckBox.Text = "Statues";
             this.StatueCheckBox.UseVisualStyleBackColor = true;
@@ -193,7 +210,7 @@
             this.BillboardCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BillboardCheckBox.Location = new System.Drawing.Point(6, 56);
             this.BillboardCheckBox.Name = "BillboardCheckBox";
-            this.BillboardCheckBox.Size = new System.Drawing.Size(88, 20);
+            this.BillboardCheckBox.Size = new System.Drawing.Size(87, 20);
             this.BillboardCheckBox.TabIndex = 4;
             this.BillboardCheckBox.Text = "Billboards";
             this.BillboardCheckBox.UseVisualStyleBackColor = true;
@@ -207,9 +224,9 @@
             this.MethodGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MethodGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MethodGroupBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(193)))), ((int)(((byte)(198)))));
-            this.MethodGroupBox.Location = new System.Drawing.Point(173, 279);
+            this.MethodGroupBox.Location = new System.Drawing.Point(19, 211);
             this.MethodGroupBox.Name = "MethodGroupBox";
-            this.MethodGroupBox.Size = new System.Drawing.Size(232, 100);
+            this.MethodGroupBox.Size = new System.Drawing.Size(249, 100);
             this.MethodGroupBox.TabIndex = 13;
             this.MethodGroupBox.TabStop = false;
             this.MethodGroupBox.Text = "Scale Method";
@@ -221,10 +238,10 @@
             this.ToFactorRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ToFactorRadioButton.Location = new System.Drawing.Point(21, 64);
             this.ToFactorRadioButton.Name = "ToFactorRadioButton";
-            this.ToFactorRadioButton.Size = new System.Drawing.Size(193, 28);
+            this.ToFactorRadioButton.Size = new System.Drawing.Size(224, 28);
             this.ToFactorRadioButton.TabIndex = 15;
             this.ToFactorRadioButton.TabStop = true;
-            this.ToFactorRadioButton.Text = "Scale to Input Scale";
+            this.ToFactorRadioButton.Text = "Scale to terrain.hf Scale";
             this.ToFactorRadioButton.UseVisualStyleBackColor = true;
             this.ToFactorRadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckChanged);
             // 
@@ -233,12 +250,12 @@
             this.ByFactorRadioButton.AutoSize = true;
             this.ByFactorRadioButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ByFactorRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ByFactorRadioButton.Location = new System.Drawing.Point(21, 30);
+            this.ByFactorRadioButton.Location = new System.Drawing.Point(19, 30);
             this.ByFactorRadioButton.Name = "ByFactorRadioButton";
-            this.ByFactorRadioButton.Size = new System.Drawing.Size(204, 28);
+            this.ByFactorRadioButton.Size = new System.Drawing.Size(158, 28);
             this.ByFactorRadioButton.TabIndex = 14;
             this.ByFactorRadioButton.TabStop = true;
-            this.ByFactorRadioButton.Text = "Scale by Input Factor";
+            this.ByFactorRadioButton.Text = "Scale by Factor";
             this.ByFactorRadioButton.UseVisualStyleBackColor = true;
             this.ByFactorRadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckChanged);
             // 
@@ -248,17 +265,17 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(193)))), ((int)(((byte)(198)))));
-            this.label2.Location = new System.Drawing.Point(233, 207);
+            this.label2.Location = new System.Drawing.Point(292, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(115, 24);
             this.label2.TabIndex = 22;
-            this.label2.Text = "Scale/Factor";
+            this.label2.Text = "Factor/Scale";
             // 
             // methodErrLabel
             // 
             this.methodErrLabel.BackColor = System.Drawing.Color.Transparent;
             this.methodErrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.methodErrLabel.Location = new System.Drawing.Point(173, 381);
+            this.methodErrLabel.Location = new System.Drawing.Point(35, 314);
             this.methodErrLabel.Name = "methodErrLabel";
             this.methodErrLabel.Size = new System.Drawing.Size(232, 24);
             this.methodErrLabel.TabIndex = 15;
@@ -269,9 +286,9 @@
             // 
             this.fileCheckErrLabel.BackColor = System.Drawing.Color.Transparent;
             this.fileCheckErrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fileCheckErrLabel.Location = new System.Drawing.Point(15, 187);
+            this.fileCheckErrLabel.Location = new System.Drawing.Point(12, 189);
             this.fileCheckErrLabel.Name = "fileCheckErrLabel";
-            this.fileCheckErrLabel.Size = new System.Drawing.Size(553, 18);
+            this.fileCheckErrLabel.Size = new System.Drawing.Size(279, 18);
             this.fileCheckErrLabel.TabIndex = 10;
             this.fileCheckErrLabel.Text = "label3";
             this.fileCheckErrLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -286,7 +303,7 @@
             this.ScaleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ScaleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ScaleButton.ForeColor = System.Drawing.Color.White;
-            this.ScaleButton.Location = new System.Drawing.Point(211, 408);
+            this.ScaleButton.Location = new System.Drawing.Point(67, 341);
             this.ScaleButton.Name = "ScaleButton";
             this.ScaleButton.Size = new System.Drawing.Size(158, 47);
             this.ScaleButton.TabIndex = 15;
@@ -300,7 +317,7 @@
             this.UserInputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UserInputTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserInputTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(193)))), ((int)(((byte)(198)))));
-            this.UserInputTextBox.Location = new System.Drawing.Point(238, 234);
+            this.UserInputTextBox.Location = new System.Drawing.Point(296, 101);
             this.UserInputTextBox.MaxLength = 14;
             this.UserInputTextBox.Name = "UserInputTextBox";
             this.UserInputTextBox.Size = new System.Drawing.Size(106, 22);
@@ -313,20 +330,20 @@
             // 
             this.progressLabel.BackColor = System.Drawing.Color.Transparent;
             this.progressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.progressLabel.Location = new System.Drawing.Point(16, 515);
+            this.progressLabel.Location = new System.Drawing.Point(12, 440);
             this.progressLabel.Name = "progressLabel";
-            this.progressLabel.Size = new System.Drawing.Size(556, 46);
+            this.progressLabel.Size = new System.Drawing.Size(556, 25);
             this.progressLabel.TabIndex = 19;
             this.progressLabel.Text = "label7";
-            this.progressLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.progressLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // userInputErrLabel
             // 
             this.userInputErrLabel.BackColor = System.Drawing.Color.Transparent;
             this.userInputErrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userInputErrLabel.Location = new System.Drawing.Point(175, 260);
+            this.userInputErrLabel.Location = new System.Drawing.Point(274, 126);
             this.userInputErrLabel.Name = "userInputErrLabel";
-            this.userInputErrLabel.Size = new System.Drawing.Size(232, 16);
+            this.userInputErrLabel.Size = new System.Drawing.Size(160, 16);
             this.userInputErrLabel.TabIndex = 12;
             this.userInputErrLabel.Text = "label4";
             this.userInputErrLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -335,54 +352,70 @@
             // 
             this.filenameLabel.BackColor = System.Drawing.Color.Transparent;
             this.filenameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filenameLabel.Location = new System.Drawing.Point(12, 46);
+            this.filenameLabel.Location = new System.Drawing.Point(20, 44);
             this.filenameLabel.Name = "filenameLabel";
-            this.filenameLabel.Size = new System.Drawing.Size(556, 25);
+            this.filenameLabel.Size = new System.Drawing.Size(429, 25);
             this.filenameLabel.TabIndex = 2;
             this.filenameLabel.Text = "label2";
-            this.filenameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.filenameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // pictureBox1
+            // progressBar
             // 
-            this.pictureBox1.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.cube_icon_kjijxo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(444, 76);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(113, 108);
-            this.pictureBox1.TabIndex = 24;
-            this.pictureBox1.TabStop = false;
+            this.progressBar.Location = new System.Drawing.Point(12, 400);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(556, 34);
+            this.progressBar.TabIndex = 26;
+            this.progressBar.UseWaitCursor = true;
+            this.progressBar.Visible = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.sticker;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox3.Location = new System.Drawing.Point(454, 138);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(114, 107);
+            this.pictureBox3.TabIndex = 27;
+            this.pictureBox3.TabStop = false;
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.racing_flag_icon_race_checker_chequred_checkered_flag_tom_hill_transparent;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(28, 76);
+            this.pictureBox2.Location = new System.Drawing.Point(454, 262);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(117, 108);
+            this.pictureBox2.Size = new System.Drawing.Size(114, 107);
             this.pictureBox2.TabIndex = 25;
             this.pictureBox2.TabStop = false;
             // 
-            // edinfoCheckbox
+            // pictureBox1
             // 
-            this.edinfoCheckbox.AutoSize = true;
-            this.edinfoCheckbox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.edinfoCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.edinfoCheckbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(193)))), ((int)(((byte)(198)))));
-            this.edinfoCheckbox.Location = new System.Drawing.Point(181, 30);
-            this.edinfoCheckbox.Name = "edinfoCheckbox";
-            this.edinfoCheckbox.Size = new System.Drawing.Size(65, 20);
-            this.edinfoCheckbox.TabIndex = 24;
-            this.edinfoCheckbox.Text = "Edinfo";
-            this.edinfoCheckbox.UseVisualStyleBackColor = true;
+            this.pictureBox1.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.cube_icon_kjijxo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(455, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(113, 108);
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
             // 
-            // progressBar
+            // disableScaleYCheckBox
             // 
-            this.progressBar.Location = new System.Drawing.Point(132, 475);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(319, 34);
-            this.progressBar.TabIndex = 26;
-            this.progressBar.UseWaitCursor = true;
-            this.progressBar.Visible = false;
+            this.disableScaleYCheckBox.AutoSize = true;
+            this.disableScaleYCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.disableScaleYCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.disableScaleYCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(193)))), ((int)(((byte)(198)))));
+            this.disableScaleYCheckBox.Location = new System.Drawing.Point(277, 145);
+            this.disableScaleYCheckBox.Name = "disableScaleYCheckBox";
+            this.disableScaleYCheckBox.Size = new System.Drawing.Size(175, 20);
+            this.disableScaleYCheckBox.TabIndex = 28;
+            this.disableScaleYCheckBox.Text = "Disable y-value Scaling?";
+            this.toolTip.SetToolTip(this.disableScaleYCheckBox, "Checking this will disable the scaling of y-values in statues/billboards.");
+            this.disableScaleYCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // toolTip
+            // 
+            this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip.ToolTipTitle = "Disable y-value Scaling";
             // 
             // TrackScalerForm
             // 
@@ -390,7 +423,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(583, 554);
+            this.ClientSize = new System.Drawing.Size(591, 480);
+            this.Controls.Add(this.disableScaleYCheckBox);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -416,8 +451,9 @@
             this.FilesGroupBox.PerformLayout();
             this.MethodGroupBox.ResumeLayout(false);
             this.MethodGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -449,8 +485,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private QuantumConcepts.Common.Forms.UI.Controls.NewProgressBar progressBar;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.CheckBox edinfoCheckbox;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.CheckBox disableScaleYCheckBox;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
 

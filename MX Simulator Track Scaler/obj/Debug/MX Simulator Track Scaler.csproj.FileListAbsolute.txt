@@ -1,10 +1,14 @@
 C:\Users\Jakob\source\repos\MX Simulator Track Scaler\bin\Debug\MX Simulator Track Scaler.exe.config
 C:\Users\Jakob\source\repos\MX Simulator Track Scaler\bin\Debug\MX Simulator Track Scaler.exe
 C:\Users\Jakob\source\repos\MX Simulator Track Scaler\bin\Debug\MX Simulator Track Scaler.pdb
-C:\Users\Jakob\source\repos\MX Simulator Track Scaler\obj\Debug\MX Simulator Track Scaler.csprojAssemblyReference.cache
 C:\Users\Jakob\source\repos\MX Simulator Track Scaler\obj\Debug\MX_Simulator_Track_Scaler.Properties.Resources.resources
 C:\Users\Jakob\source\repos\MX Simulator Track Scaler\obj\Debug\MX_Simulator_Track_Scaler.TrackScalerForm.resources
 C:\Users\Jakob\source\repos\MX Simulator Track Scaler\obj\Debug\MX Simulator Track Scaler.csproj.GenerateResource.cache
 C:\Users\Jakob\source\repos\MX Simulator Track Scaler\obj\Debug\MX Simulator Track Scaler.csproj.CoreCompileInputs.cache
 C:\Users\Jakob\source\repos\MX Simulator Track Scaler\obj\Debug\MX Simulator Track Scaler.exe
 C:\Users\Jakob\source\repos\MX Simulator Track Scaler\obj\Debug\MX Simulator Track Scaler.pdb
+C:\Users\Jakob\source\repos\MX Simulator Track Scaler\obj\Debug\MX Simulator Track Scaler.csproj.AssemblyReference.cache
+C:\Users\Jakob\source\repos\MX Simulator Track Scaler\obj\Debug\MX Simulator Track Scaler.csproj.SuggestedBindingRedirects.cache
+C:\Users\Jakob\source\repos\MX Simulator Track Scaler\bin\Debug\BetterFolderBrowser.dll
+C:\Users\Jakob\source\repos\MX Simulator Track Scaler\bin\Debug\BetterFolderBrowser.xml
+C:\Users\Jakob\source\repos\MX Simulator Track Scaler\obj\Debug\MX Simulator Track Scaler.csproj.CopyComplete

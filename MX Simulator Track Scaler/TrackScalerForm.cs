@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using WK.Libraries.BetterFolderBrowserNS;
 
 namespace MX_Simulator_Track_Scaler
 {
@@ -32,7 +33,8 @@ namespace MX_Simulator_Track_Scaler
         StreamReader edinfoFile;
         StreamWriter temp_file;
         string temp_file_dir;
-        string old_folder_dir;
+        string original_files_dir;
+        string prev_files_dir;
 
         // Scalar and Multiplier
         decimal scalar_input;
@@ -55,6 +57,8 @@ namespace MX_Simulator_Track_Scaler
         #################
         */
         bool folderSelected = false;
+        bool scaleYValues = true;
+        bool originalFilesCreated = true;
 
 
         private void TrackScalerForm_Load(object sender, EventArgs e) {
@@ -94,10 +98,18 @@ namespace MX_Simulator_Track_Scaler
         }
 
         private void OpenFolderButton_Click(object sender, EventArgs e) {
+            
+            var betterFolderBrowser = new BetterFolderBrowser();
 
-            if (folderBrowserDialog.ShowDialog() == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath)) {
+            betterFolderBrowser.Title = "Select Track Folder...";
+            betterFolderBrowser.RootFolder = "C:\\";
 
-                string[] files = Directory.GetFiles(folderBrowserDialog.SelectedPath);
+            // Only one folder allowed.
+            betterFolderBrowser.Multiselect = false;
+
+            if (betterFolderBrowser.ShowDialog() == DialogResult.OK && !string.IsNullOrWhiteSpace(betterFolderBrowser.SelectedPath)) {
+
+                string[] files = Directory.GetFiles(betterFolderBrowser.SelectedPath);
                 if (files.Length == 0)
                 {
                     ChangeLabel(fileErrLabel, Color.Red, "Error: File Incompatible");
@@ -108,9 +120,10 @@ namespace MX_Simulator_Track_Scaler
                 progressBar.Visible = false;
 
                 // store folder path
-                folderPath = folderBrowserDialog.SelectedPath;
+                folderPath = betterFolderBrowser.SelectedPath;
                 temp_file_dir = folderPath + "\\replace.tmp";
-                old_folder_dir = folderPath + "\\old files";
+                original_files_dir = folderPath + "\\original files";
+                prev_files_dir = folderPath + "\\previous files";
 
                 ChangeLabel(filenameLabel, Color.FromArgb(189, 193, 198), folderPath);
                 folderSelected = true;
@@ -150,7 +163,7 @@ namespace MX_Simulator_Track_Scaler
             }
 
             if (UserInputTextBox.Text == string.Empty) {
-                ChangeLabel(userInputErrLabel, Color.Red, "Error: Enter a scale/factor");
+                ChangeLabel(userInputErrLabel, Color.Red, "Error: Enter a factor/scale");
                 return;
             }
 
@@ -167,6 +180,8 @@ namespace MX_Simulator_Track_Scaler
             if (!CheckBox_ErrHandling(FlaggersCheckBox, "flaggers")) return;
             if (!CheckBox_ErrHandling(TimingGateCheckBox, "timing_gates")) return;
             if (!CheckBox_ErrHandling(edinfoCheckbox, "edinfo")) return;
+
+            scaleYValues = !disableScaleYCheckBox.Checked;
 
             /*
             ###################################
@@ -221,8 +236,14 @@ namespace MX_Simulator_Track_Scaler
             }
 
             // Create Folder to hold old files
-            if (!System.IO.Directory.Exists(old_folder_dir)) {
-                System.IO.Directory.CreateDirectory(old_folder_dir);
+            if (!System.IO.Directory.Exists(original_files_dir)) 
+            {
+                System.IO.Directory.CreateDirectory(original_files_dir);
+                originalFilesCreated = false;
+
+            } else if (!System.IO.Directory.Exists(prev_files_dir)) 
+            {
+                System.IO.Directory.CreateDirectory(prev_files_dir);
             }
             
             // Do the main work
@@ -234,8 +255,10 @@ namespace MX_Simulator_Track_Scaler
             if (TimingGateCheckBox.Checked && !Do_timing_gate_work()) return;
             if (edinfoCheckbox.Checked && !Do_edinfo_work()) return;
 
-            progressLabel.Location = new Point(15, 515);
+            progressLabel.Location = new Point(15, 440);
             ChangeLabel(progressLabel, Color.FromArgb(189, 193, 198), "Success!");
+
+            if (!originalFilesCreated) originalFilesCreated = true;
         }
 
         private bool CheckBox_ErrHandling(CheckBox box, string filename) {
@@ -310,12 +333,21 @@ namespace MX_Simulator_Track_Scaler
             // If a terrain.hf file exists in the current directory and the user didn't send that file in,
             // throw an error.
             if (File.Exists(folderPath + "\\terrain.hf")) {
-                // If a file exists in the old folder directory, delete it
-                if (File.Exists(old_folder_dir + "\\terrain.hf")) {
-                    File.Delete(old_folder_dir + "\\terrain.hf");
+                if (originalFilesCreated)
+                {
+                    // If a file exists in the old folder directory, delete it
+                    if (File.Exists(prev_files_dir + "\\terrain.hf")) {
+                        File.Delete(prev_files_dir + "\\terrain.hf");
+                    }
+                    // Move the terrain.hf to the previous files directory
+                    File.Move(folderPath + "\\terrain.hf", prev_files_dir + "\\terrain.hf");
+                } 
+                else
+                {
+                    // Move the terrain.hf to the original files directory
+                    File.Move(folderPath + "\\terrain.hf", original_files_dir + "\\terrain.hf");
                 }
-                // Move the terrain.hf to the old folder directory
-                File.Move(folderPath + "\\terrain.hf", old_folder_dir + "\\terrain.hf");
+                
             }
             // Open the temp file
             temp_file = File.CreateText(temp_file_dir);
@@ -797,22 +829,33 @@ namespace MX_Simulator_Track_Scaler
         private decimal[] Get_Coords(decimal x, decimal y, decimal z) {
             decimal[] coords = new decimal[3];
             coords[0] = x * multiplier;
-            coords[1] = y * multiplier;
+            coords[1] = y;
+            if (scaleYValues)
+            {
+                coords[1] = y * multiplier;
+            }
             coords[2] = z * multiplier;
             return coords;
         }
 
         private void Move_Temp_File(string filename, StreamReader file_to_close) {
             // move the current file to an old file, the move the temp file to the new file
-            if (File.Exists(old_folder_dir + '\\' + filename)) {
-                File.Delete(old_folder_dir + '\\' + filename);
+            string dir_to_move = prev_files_dir;
+            
+            if (!originalFilesCreated)
+            {
+                dir_to_move = original_files_dir;
+            }
+            
+            if (File.Exists(prev_files_dir + '\\' + filename)) {
+                File.Delete(prev_files_dir + '\\' + filename);
             }
 
             // Close the files before moving
             file_to_close.Close();
             temp_file.Close();
 
-            File.Move(folderPath + '\\' + filename, old_folder_dir + '\\' + filename);
+            File.Move(folderPath + '\\' + filename, dir_to_move + '\\' + filename);
             File.Move(temp_file_dir, folderPath + '\\' + filename);
         }
     }

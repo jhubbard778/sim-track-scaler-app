@@ -2,7 +2,7 @@
 Application that allows you to scale tracks to your liking, with options for either entering in your own multiplier or scaling to a specific terrain.hf scale.
 
 # Installation
-1. Download the [Zip](https://github.com/jhubbard778/sim-track-scaler-app/archive/refs/heads/main.zip) and extract the MX Simulator Track Scaler.exe application.
+1. Download the [Zip](https://github.com/jhubbard778/sim-track-scaler-app/archive/refs/heads/main.zip) and extract the Track Scaler Folder.
 2. Start MX Simulator Track Scaler.exe
 
 # Usage
