@@ -10,5 +10,4 @@ C:\Users\Jakob\source\repos\MX Simulator Track Scaler\obj\Release\MX Simulator T
 C:\Users\Jakob\source\repos\MX Simulator Track Scaler\bin\Release\BetterFolderBrowser.dll
 C:\Users\Jakob\source\repos\MX Simulator Track Scaler\bin\Release\BetterFolderBrowser.xml
 C:\Users\Jakob\source\repos\MX Simulator Track Scaler\obj\Release\MX Simulator Track Scaler.csproj.AssemblyReference.cache
-C:\Users\Jakob\source\repos\MX Simulator Track Scaler\obj\Release\MX Simulator Track Scaler.csproj.SuggestedBindingRedirects.cache
 C:\Users\Jakob\source\repos\MX Simulator Track Scaler\obj\Release\MX Simulator Track Scaler.csproj.CopyComplete

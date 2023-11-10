@@ -63,6 +63,16 @@ namespace MX_Simulator_Track_Scaler.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _263103 {
+            get {
+                object obj = ResourceManager.GetObject("263103", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cube_icon_kjijxo {
             get {
                 object obj = ResourceManager.GetObject("cube_icon_kjijxo", resourceCulture);
@@ -73,9 +83,69 @@ namespace MX_Simulator_Track_Scaler.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap exiticon {
+            get {
+                object obj = ResourceManager.GetObject("exiticon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Folder_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Folder_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap method_icon {
+            get {
+                object obj = ResourceManager.GetObject("method icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minimizeicon {
+            get {
+                object obj = ResourceManager.GetObject("minimizeicon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap options_icon {
+            get {
+                object obj = ResourceManager.GetObject("options icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap racing_flag_icon_race_checker_chequred_checkered_flag_tom_hill_transparent {
             get {
                 object obj = ResourceManager.GetObject("racing-flag-icon-race-checker-chequred-checkered-flag-tom-hill-transparent", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap scale_icon {
+            get {
+                object obj = ResourceManager.GetObject("scale icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

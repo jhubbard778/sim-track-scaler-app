@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using WK.Libraries.BetterFolderBrowserNS;
+using System.Runtime.InteropServices;
+using static System.Windows.Forms.AxHost;
 
 namespace MX_Simulator_Track_Scaler
 {
@@ -60,9 +62,11 @@ namespace MX_Simulator_Track_Scaler
         bool scaleYValues = true;
         bool originalFilesCreated = true;
 
+        private Point lastLocation;
+        private bool mouseDown;
 
         private void TrackScalerForm_Load(object sender, EventArgs e) {
-            fileErrLabel.ResetText();
+            newTrackSizeLabel.ResetText();
             fileCheckErrLabel.ResetText();
             methodErrLabel.ResetText();
             progressLabel.ResetText();
@@ -98,21 +102,22 @@ namespace MX_Simulator_Track_Scaler
         }
 
         private void OpenFolderButton_Click(object sender, EventArgs e) {
-            
-            var betterFolderBrowser = new BetterFolderBrowser();
 
-            betterFolderBrowser.Title = "Select Track Folder...";
-            betterFolderBrowser.RootFolder = "C:\\";
+            var betterFolderBrowser = new BetterFolderBrowser
+            {
+                Title = "Select Track Folder...",
+                RootFolder = "C:\\",
 
-            // Only one folder allowed.
-            betterFolderBrowser.Multiselect = false;
+                // Only one folder allowed.
+                Multiselect = false
+            };
 
             if (betterFolderBrowser.ShowDialog() == DialogResult.OK && !string.IsNullOrWhiteSpace(betterFolderBrowser.SelectedPath)) {
 
                 string[] files = Directory.GetFiles(betterFolderBrowser.SelectedPath);
                 if (files.Length == 0)
                 {
-                    ChangeLabel(fileErrLabel, Color.Red, "Error: File Incompatible");
+                    ChangeLabel(filenameLabel, Color.Red, "Error: Empty Folder");
                     return;
                 }
                 // Reset progress label error if the user selects new folder
@@ -121,14 +126,19 @@ namespace MX_Simulator_Track_Scaler
 
                 // store folder path
                 folderPath = betterFolderBrowser.SelectedPath;
+
+                if (!Check_Terrain())
+                {
+                    ChangeLabel(filenameLabel, Color.Red, "Error: Folder Missing terrain.hf file");
+                    return;
+                }
+
                 temp_file_dir = folderPath + "\\replace.tmp";
                 original_files_dir = folderPath + "\\original files";
                 prev_files_dir = folderPath + "\\previous files";
 
-                ChangeLabel(filenameLabel, Color.FromArgb(189, 193, 198), folderPath);
+                ChangeLabel(filenameLabel, Color.White, folderPath);
                 folderSelected = true;
-                // Close the terrain file, reset any error messages
-                fileErrLabel.ResetText();
             }
         }
 
@@ -139,6 +149,10 @@ namespace MX_Simulator_Track_Scaler
 
         private void RadioButton_CheckChanged(object sender, EventArgs e) {
             methodErrLabel.ResetText();
+            if (folderSelected && (ByFactorRadioButton.Checked || ToFactorRadioButton.Checked))
+            {
+                CalculateAndDisplayNewScale();
+            }
         }
 
         private void ScaleButton_Click(object sender, EventArgs e) {
@@ -152,7 +166,7 @@ namespace MX_Simulator_Track_Scaler
             ##########################
              */
             if (!folderSelected) {
-                ChangeLabel(fileErrLabel, Color.Red, "Error: Select a folder");
+                ChangeLabel(filenameLabel, Color.Red, "Error: Select a folder");
                 return;
             }
 
@@ -162,13 +176,14 @@ namespace MX_Simulator_Track_Scaler
                 return;
             }
 
-            if (UserInputTextBox.Text == string.Empty) {
-                ChangeLabel(userInputErrLabel, Color.Red, "Error: Enter a factor/scale");
+            if (!ByFactorRadioButton.Checked && !ToFactorRadioButton.Checked)
+            {
+                ChangeLabel(methodErrLabel, Color.Red, "Error: Select a Method");
                 return;
             }
 
-            if (!ByFactorRadioButton.Checked && !ToFactorRadioButton.Checked) {
-                ChangeLabel(methodErrLabel, Color.Red, "Error: Select a Method");
+            if (UserInputTextBox.Text == string.Empty) {
+                ChangeLabel(userInputErrLabel, Color.Red, "Error: Enter a factor/scale");
                 return;
             }
 
@@ -255,8 +270,7 @@ namespace MX_Simulator_Track_Scaler
             if (TimingGateCheckBox.Checked && !Do_timing_gate_work()) return;
             if (edinfoCheckbox.Checked && !Do_edinfo_work()) return;
 
-            progressLabel.Location = new Point(15, 440);
-            ChangeLabel(progressLabel, Color.FromArgb(189, 193, 198), "Success!");
+            ChangeLabel(progressLabel, Color.White, "Success!");
 
             if (!originalFilesCreated) originalFilesCreated = true;
         }
@@ -264,7 +278,7 @@ namespace MX_Simulator_Track_Scaler
         private bool CheckBox_ErrHandling(CheckBox box, string filename) {
             bool pass = true;
             if (box.Checked && !File.Exists(folderPath + '\\' + filename)) {
-                ChangeLabel(fileCheckErrLabel, Color.Red, "Error: " + filename + " does not exist in application directory!");
+                ChangeLabel(fileCheckErrLabel, Color.Red, "Error: cannot find " + filename + " file!");
                 pass = false;
             }
             return pass;
@@ -272,7 +286,7 @@ namespace MX_Simulator_Track_Scaler
 
         private bool Check_Terrain() {
             if (!File.Exists(folderPath + "\\terrain.hf")) {
-                ChangeLabel(filenameLabel, Color.Red, "Error: terrain.hf file does not exist!");
+                ChangeLabel(filenameLabel, Color.Red, "Error: terrain.hf file does not exist in this folder!");
                 return false;
             }
 
@@ -314,14 +328,38 @@ namespace MX_Simulator_Track_Scaler
         }
 
         private void UserInputTextBox_TextChanged(object sender, EventArgs e) {
+            
             if (UserInputTextBox.TextLength == 1) {
                 userInputErrLabel.ResetText();
             }
+
+            if (folderSelected && (ByFactorRadioButton.Checked || ToFactorRadioButton.Checked))
+            {
+                CalculateAndDisplayNewScale();
+            }
+        }
+
+        private void CalculateAndDisplayNewScale()
+        {
+            if (!decimal.TryParse(UserInputTextBox.Text, out decimal scale) || UserInputTextBox.TextLength == 0)
+            {
+                newTrackSizeLabel.ResetText();
+                return;
+            }
+
+            // Calculate the new factor / scale
+            decimal new_scale = scale;
+            if (ToFactorRadioButton.Checked)
+            {
+                new_scale = Math.Round(scale / terrain_scale, 6);
+            }
+
+            ChangeLabel(newTrackSizeLabel, Color.White, $"New Track Scale - {new_scale}:1");
         }
 
         private bool Do_terrain_work() {
 
-            ChangeLabel(progressLabel, Color.FromArgb(189, 193, 198), "Scaling Terrain...");
+            ChangeLabel(progressLabel, Color.White, "Scaling Terrain...");
 
             decimal scalar_output = scalar_input;
             if (ByFactorRadioButton.Checked) {
@@ -367,7 +405,7 @@ namespace MX_Simulator_Track_Scaler
 
         private bool Do_billboard_work() {
 
-            ChangeLabel(progressLabel, Color.FromArgb(189, 193, 198), "Scaling Billboards...");
+            ChangeLabel(progressLabel, Color.White, "Scaling Billboards...");
 
             // re-open the file
             billboards_file = File.OpenText(folderPath + "\\billboards");
@@ -432,7 +470,7 @@ namespace MX_Simulator_Track_Scaler
         }
 
         private bool Do_statue_work() {
-            ChangeLabel(progressLabel, Color.FromArgb(189, 193, 198), "Scaling Statues...");
+            ChangeLabel(progressLabel, Color.White, "Scaling Statues...");
 
             statues_file = File.OpenText(folderPath + "\\statues");
             temp_file = File.CreateText(temp_file_dir);
@@ -493,7 +531,7 @@ namespace MX_Simulator_Track_Scaler
         }
 
         private bool Do_decal_work() {
-            ChangeLabel(progressLabel, Color.FromArgb(189, 193, 198), "Scaling Decals...");
+            ChangeLabel(progressLabel, Color.White, "Scaling Decals...");
 
             decals_file = File.OpenText(folderPath + "\\decals");
             temp_file = File.CreateText(temp_file_dir);
@@ -551,7 +589,7 @@ namespace MX_Simulator_Track_Scaler
         }
 
         private bool Do_flagger_work() {
-            ChangeLabel(progressLabel, Color.FromArgb(189, 193, 198), "Scaling Flaggers...");
+            ChangeLabel(progressLabel, Color.White, "Scaling Flaggers...");
 
             flaggers_file = File.OpenText(folderPath + "\\flaggers");
             temp_file = File.CreateText(temp_file_dir);
@@ -602,7 +640,7 @@ namespace MX_Simulator_Track_Scaler
         }
 
         private bool Do_timing_gate_work() {
-            ChangeLabel(progressLabel, Color.FromArgb(189, 193, 198), "Scaling Timing Gates...");
+            ChangeLabel(progressLabel, Color.White, "Scaling Timing Gates...");
 
             timing_gates_file = File.OpenText(folderPath + "\\timing_gates");
             temp_file = File.CreateText(temp_file_dir);
@@ -741,7 +779,7 @@ namespace MX_Simulator_Track_Scaler
         }
 
         private bool Do_edinfo_work() {
-            ChangeLabel(progressLabel, Color.FromArgb(189, 193, 198), "Scaling Gradients...");
+            ChangeLabel(progressLabel, Color.White, "Scaling Gradients...");
 
             edinfoFile = File.OpenText(folderPath + "\\edinfo");
             temp_file = File.CreateText(temp_file_dir);
@@ -857,6 +895,38 @@ namespace MX_Simulator_Track_Scaler
 
             File.Move(folderPath + '\\' + filename, dir_to_move + '\\' + filename);
             File.Move(temp_file_dir, folderPath + '\\' + filename);
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void TrackScalerForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void TrackScalerForm_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void TrackScalerForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void MinimizeButton_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }

@@ -92,6 +92,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="cube.ico" />
+    <None Include="Resources\minimizeicon.png" />
+    <None Include="Resources\exiticon.png" />
+    <None Include="Resources\scale icon.png" />
+    <None Include="Resources\options icon.png" />
+    <None Include="Resources\method icon.png" />
+    <None Include="Resources\263103.png" />
+    <None Include="Resources\Folder_Icon.png" />
     <None Include="Resources\sticker.png" />
     <None Include="Resources\racing-flag-icon-race-checker-chequred-checkered-flag-tom-hill-transparent.png" />
     <None Include="Resources\cube_icon_kjijxo.png" />
