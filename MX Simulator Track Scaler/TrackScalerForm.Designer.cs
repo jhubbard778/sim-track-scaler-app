@@ -49,7 +49,7 @@
             this.userInputErrLabel = new System.Windows.Forms.Label();
             this.filenameLabel = new System.Windows.Forms.Label();
             this.disableScaleYCheckBox = new System.Windows.Forms.CheckBox();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.yscalingtoolTip = new System.Windows.Forms.ToolTip(this.components);
             this.sideMenuPanel = new System.Windows.Forms.Panel();
             this.authorLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -74,6 +74,9 @@
             this.exitButton2 = new System.Windows.Forms.Button();
             this.OpenFolderButton = new System.Windows.Forms.Button();
             this.progressBar = new QuantumConcepts.Common.Forms.UI.Controls.NewProgressBar();
+            this.mirroredCheckbox = new System.Windows.Forms.CheckBox();
+            this.mirrorTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.extraOptionsErrLabel = new System.Windows.Forms.Label();
             this.sideMenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -336,13 +339,13 @@
             this.disableScaleYCheckBox.Size = new System.Drawing.Size(175, 20);
             this.disableScaleYCheckBox.TabIndex = 28;
             this.disableScaleYCheckBox.Text = "Disable y-value Scaling?";
-            this.toolTip.SetToolTip(this.disableScaleYCheckBox, "Checking this will disable the scaling of y-values in statues/billboards.");
+            this.yscalingtoolTip.SetToolTip(this.disableScaleYCheckBox, "Checking this will disable the scaling of y-values in statues/billboards.");
             this.disableScaleYCheckBox.UseVisualStyleBackColor = true;
             // 
-            // toolTip
+            // yscalingtoolTip
             // 
-            this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTip.ToolTipTitle = "Disable y-value Scaling";
+            this.yscalingtoolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.yscalingtoolTip.ToolTipTitle = "Disable y-value Scaling";
             // 
             // sideMenuPanel
             // 
@@ -554,6 +557,7 @@
             // 
             this.extraOptionsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.extraOptionsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.extraOptionsPanel.Controls.Add(this.mirroredCheckbox);
             this.extraOptionsPanel.Controls.Add(this.pictureBox4);
             this.extraOptionsPanel.Controls.Add(this.extraOptionsLabel);
             this.extraOptionsPanel.Controls.Add(this.disableScaleYCheckBox);
@@ -656,6 +660,36 @@
             this.progressBar.UseWaitCursor = true;
             this.progressBar.Visible = false;
             // 
+            // mirroredCheckbox
+            // 
+            this.mirroredCheckbox.AutoSize = true;
+            this.mirroredCheckbox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.mirroredCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mirroredCheckbox.ForeColor = System.Drawing.Color.White;
+            this.mirroredCheckbox.Location = new System.Drawing.Point(39, 71);
+            this.mirroredCheckbox.Name = "mirroredCheckbox";
+            this.mirroredCheckbox.Size = new System.Drawing.Size(76, 20);
+            this.mirroredCheckbox.TabIndex = 32;
+            this.mirroredCheckbox.Text = "Mirrored";
+            this.mirrorTooltip.SetToolTip(this.mirroredCheckbox, "This mirrors the terrain along with all the objects on the track");
+            this.mirroredCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // mirrorTooltip
+            // 
+            this.mirrorTooltip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.mirrorTooltip.ToolTipTitle = "Mirrored";
+            // 
+            // extraOptionsErrLabel
+            // 
+            this.extraOptionsErrLabel.BackColor = System.Drawing.Color.Transparent;
+            this.extraOptionsErrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.extraOptionsErrLabel.Location = new System.Drawing.Point(440, 350);
+            this.extraOptionsErrLabel.Name = "extraOptionsErrLabel";
+            this.extraOptionsErrLabel.Size = new System.Drawing.Size(254, 16);
+            this.extraOptionsErrLabel.TabIndex = 33;
+            this.extraOptionsErrLabel.Text = "label6";
+            this.extraOptionsErrLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // TrackScalerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -663,6 +697,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(720, 480);
+            this.Controls.Add(this.extraOptionsErrLabel);
             this.Controls.Add(this.minimizeButton);
             this.Controls.Add(this.exitButton2);
             this.Controls.Add(this.extraOptionsPanel);
@@ -735,7 +770,7 @@
         private System.Windows.Forms.CheckBox edinfoCheckbox;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.CheckBox disableScaleYCheckBox;
-        private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.ToolTip yscalingtoolTip;
         private System.Windows.Forms.Panel sideMenuPanel;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Panel filesToScalePanel;
@@ -755,6 +790,9 @@
         private System.Windows.Forms.Label authorLabel;
         private System.Windows.Forms.Button exitButton2;
         private System.Windows.Forms.Button minimizeButton;
+        private System.Windows.Forms.CheckBox mirroredCheckbox;
+        private System.Windows.Forms.ToolTip mirrorTooltip;
+        private System.Windows.Forms.Label extraOptionsErrLabel;
     }
 }
 

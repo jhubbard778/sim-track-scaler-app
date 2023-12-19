@@ -37,6 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,6 +47,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>cube.ico</ApplicationIcon>
@@ -54,6 +56,7 @@
     <Reference Include="BetterFolderBrowser, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\BetterFolderBrowser.1.2.0\lib\BetterFolderBrowser.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -65,11 +68,15 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mirror.cs" />
+    <Compile Include="ImageFunctions.cs" />
     <Compile Include="progressbar.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Scale.cs" />
     <Compile Include="TrackScalerForm.cs">
       <SubType>Form</SubType>
     </Compile>
