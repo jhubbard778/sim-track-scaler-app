@@ -12,6 +12,25 @@ namespace QuantumConcepts.Common.Forms.UI.Controls
             this.SetStyle(ControlStyles.UserPaint, true);
         }
 
+        public void SetForeColor(Color foreColor)
+        {
+            this.ForeColor = foreColor;
+        }
+
+        public void SetBackColor(Color backColor)
+        {
+            this.BackColor = backColor;
+        }
+
+        public void SetupProgressBar(int min, int max, int value = 0, int step = 1)
+        {
+            this.Minimum = min;
+            this.Maximum = max;
+            this.Value = value;
+            this.Step = step;
+            this.Visible = true;
+        }
+
         protected override void OnPaintBackground(PaintEventArgs pevent)
         {
             // None... Helps control the flicker.

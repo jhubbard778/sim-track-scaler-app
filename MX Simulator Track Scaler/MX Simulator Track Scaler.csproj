@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>MX_Simulator_Track_Scaler</RootNamespace>
     <AssemblyName>MX Simulator Track Scaler</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -22,11 +23,14 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.4.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -52,9 +56,36 @@
   <PropertyGroup>
     <ApplicationIcon>cube.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>147498FDB7DB52CDB05EB92A23F4C37A79B6F571</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>MX Simulator Track Scaler_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BetterFolderBrowser, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\BetterFolderBrowser.1.2.0\lib\BetterFolderBrowser.dll</HintPath>
+    </Reference>
+    <Reference Include="Magick.NET-Q8-AnyCPU, Version=14.1.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
+      <HintPath>packages\Magick.NET-Q8-AnyCPU.14.1.0\lib\netstandard20\Magick.NET-Q8-AnyCPU.dll</HintPath>
+    </Reference>
+    <Reference Include="Magick.NET.Core, Version=14.1.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
+      <HintPath>packages\Magick.NET.Core.14.1.0\lib\netstandard20\Magick.NET.Core.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
@@ -71,12 +102,16 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mirror.cs" />
-    <Compile Include="ImageFunctions.cs" />
+    <Compile Include="DirectoryInfo.cs" />
+    <Compile Include="FileParser.cs" />
+    <Compile Include="Helpers.cs" />
+    <Compile Include="MirrorHelper.cs" />
     <Compile Include="progressbar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Scale.cs" />
+    <Compile Include="PythonProcess.cs" />
+    <Compile Include="TerrainHelper.cs" />
+    <Compile Include="ScaleInfo.cs" />
     <Compile Include="TrackScalerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +120,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIHelper.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -98,7 +134,9 @@
     <EmbeddedResource Include="TrackScalerForm.resx">
       <DependentUpon>TrackScalerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="MX Simulator Track Scaler_TemporaryKey.pfx" />
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -114,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="cube.ico" />
+    <None Include="Resources\exiticongreyed.png" />
     <None Include="Resources\minimizeicon.png" />
     <None Include="Resources\exiticon.png" />
     <None Include="Resources\scale icon.png" />
@@ -137,5 +176,23 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Shell32">
+      <Guid>{50A7E9B0-70EF-11D1-B75A-00A0C90564FE}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="packages\Magick.NET-Q8-AnyCPU.14.1.0\build\netstandard20\Magick.NET-Q8-AnyCPU.targets" Condition="Exists('packages\Magick.NET-Q8-AnyCPU.14.1.0\build\netstandard20\Magick.NET-Q8-AnyCPU.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Magick.NET-Q8-AnyCPU.14.1.0\build\netstandard20\Magick.NET-Q8-AnyCPU.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Magick.NET-Q8-AnyCPU.14.1.0\build\netstandard20\Magick.NET-Q8-AnyCPU.targets'))" />
+  </Target>
 </Project>

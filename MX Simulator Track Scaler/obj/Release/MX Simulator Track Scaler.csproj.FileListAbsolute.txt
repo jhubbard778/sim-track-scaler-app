@@ -24,3 +24,8 @@ C:\Users\Jakob\Documents\GitHub\sim-track-scaler-app\MX Simulator Track Scaler\o
 C:\Users\Jakob\Documents\GitHub\sim-track-scaler-app\MX Simulator Track Scaler\obj\Release\MX Simulator Track Scaler.csproj.CopyComplete
 C:\Users\Jakob\Documents\GitHub\sim-track-scaler-app\MX Simulator Track Scaler\obj\Release\MX Simulator Track Scaler.exe
 C:\Users\Jakob\Documents\GitHub\sim-track-scaler-app\MX Simulator Track Scaler\obj\Release\MX Simulator Track Scaler.pdb
+C:\Users\Jakob\source\repos\MX Simulator Track Scaler\bin\Release\MX Simulator Track Scaler.exe.manifest
+C:\Users\Jakob\source\repos\MX Simulator Track Scaler\bin\Release\MX Simulator Track Scaler.application
+C:\Users\Jakob\source\repos\MX Simulator Track Scaler\obj\Release\MX Simulator Track Scaler.TrustInfo.xml
+C:\Users\Jakob\source\repos\MX Simulator Track Scaler\obj\Release\MX Simulator Track Scaler.exe.manifest
+C:\Users\Jakob\source\repos\MX Simulator Track Scaler\obj\Release\MX Simulator Track Scaler.application

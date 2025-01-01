@@ -30,107 +30,107 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrackScalerForm));
-            this.selectFolderLabel = new System.Windows.Forms.Label();
-            this.edinfoCheckbox = new System.Windows.Forms.CheckBox();
-            this.terrainCheckBox = new System.Windows.Forms.CheckBox();
+            this.SelectFolderLabel = new System.Windows.Forms.Label();
+            this.GradientCheckbox = new System.Windows.Forms.CheckBox();
+            this.TerrainCheckBox = new System.Windows.Forms.CheckBox();
             this.AllCheckBox = new System.Windows.Forms.CheckBox();
             this.TimingGateCheckBox = new System.Windows.Forms.CheckBox();
             this.FlaggersCheckBox = new System.Windows.Forms.CheckBox();
             this.DecalsCheckBox = new System.Windows.Forms.CheckBox();
             this.StatueCheckBox = new System.Windows.Forms.CheckBox();
             this.BillboardCheckBox = new System.Windows.Forms.CheckBox();
-            this.ToFactorRadioButton = new System.Windows.Forms.RadioButton();
+            this.ToTerrainScaleRadioButton = new System.Windows.Forms.RadioButton();
             this.ByFactorRadioButton = new System.Windows.Forms.RadioButton();
             this.methodErrLabel = new System.Windows.Forms.Label();
-            this.fileCheckErrLabel = new System.Windows.Forms.Label();
+            this.FileCheckErrLabel = new System.Windows.Forms.Label();
             this.ScaleButton = new System.Windows.Forms.Button();
-            this.UserInputTextBox = new System.Windows.Forms.TextBox();
-            this.progressLabel = new System.Windows.Forms.Label();
-            this.userInputErrLabel = new System.Windows.Forms.Label();
-            this.filenameLabel = new System.Windows.Forms.Label();
-            this.disableScaleYCheckBox = new System.Windows.Forms.CheckBox();
-            this.yscalingtoolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.UserInputScaleTextBox = new System.Windows.Forms.TextBox();
+            this.ProgressLabel = new System.Windows.Forms.Label();
+            this.UserInputErrLabel = new System.Windows.Forms.Label();
+            this.TrackDirectoryLabel = new System.Windows.Forms.Label();
+            this.DisableScaleYCheckBox = new System.Windows.Forms.CheckBox();
+            this.VerticalScalingTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.sideMenuPanel = new System.Windows.Forms.Panel();
-            this.authorLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.exitButton = new System.Windows.Forms.Button();
+            this.AuthorLabel = new System.Windows.Forms.Label();
+            this.TitleLabel = new System.Windows.Forms.Label();
+            this.ExitButton = new System.Windows.Forms.Button();
+            this.FilesToScalePanel = new System.Windows.Forms.Panel();
+            this.FilesToScaleLabel = new System.Windows.Forms.Label();
+            this.ScaleMethodPanel = new System.Windows.Forms.Panel();
+            this.ScaleMethodLabel = new System.Windows.Forms.Label();
+            this.FactorScalePanel = new System.Windows.Forms.Panel();
+            this.NewTrackSizeLabel = new System.Windows.Forms.Label();
+            this.FactorScaleLabel = new System.Windows.Forms.Label();
+            this.ExtraOptionsPanel = new System.Windows.Forms.Panel();
+            this.MirroredCheckbox = new System.Windows.Forms.CheckBox();
+            this.ExtraOptionsLabel = new System.Windows.Forms.Label();
+            this.MirrorTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.ExtraOptionsErrLabel = new System.Windows.Forms.Label();
+            this.ScalingProgressBar = new QuantumConcepts.Common.Forms.UI.Controls.NewProgressBar();
+            this.MinimizeButton = new System.Windows.Forms.Button();
+            this.ExitButton2 = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.scaleIconBox = new System.Windows.Forms.PictureBox();
+            this.methodIconBox = new System.Windows.Forms.PictureBox();
+            this.fileIconBox = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.filesToScalePanel = new System.Windows.Forms.Panel();
-            this.fileIconBox = new System.Windows.Forms.PictureBox();
-            this.filesToScaleLabel = new System.Windows.Forms.Label();
-            this.scaleMethodPanel = new System.Windows.Forms.Panel();
-            this.methodIconBox = new System.Windows.Forms.PictureBox();
-            this.scaleMethodLabel = new System.Windows.Forms.Label();
-            this.factorScalePanel = new System.Windows.Forms.Panel();
-            this.scaleIconBox = new System.Windows.Forms.PictureBox();
-            this.newTrackSizeLabel = new System.Windows.Forms.Label();
-            this.factorScaleLabel = new System.Windows.Forms.Label();
-            this.extraOptionsPanel = new System.Windows.Forms.Panel();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.extraOptionsLabel = new System.Windows.Forms.Label();
-            this.minimizeButton = new System.Windows.Forms.Button();
-            this.exitButton2 = new System.Windows.Forms.Button();
             this.OpenFolderButton = new System.Windows.Forms.Button();
-            this.progressBar = new QuantumConcepts.Common.Forms.UI.Controls.NewProgressBar();
-            this.mirroredCheckbox = new System.Windows.Forms.CheckBox();
-            this.mirrorTooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.extraOptionsErrLabel = new System.Windows.Forms.Label();
             this.sideMenuPanel.SuspendLayout();
+            this.FilesToScalePanel.SuspendLayout();
+            this.ScaleMethodPanel.SuspendLayout();
+            this.FactorScalePanel.SuspendLayout();
+            this.ExtraOptionsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scaleIconBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.methodIconBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileIconBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.filesToScalePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fileIconBox)).BeginInit();
-            this.scaleMethodPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.methodIconBox)).BeginInit();
-            this.factorScalePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.scaleIconBox)).BeginInit();
-            this.extraOptionsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
-            // selectFolderLabel
+            // SelectFolderLabel
             // 
-            this.selectFolderLabel.AutoSize = true;
-            this.selectFolderLabel.BackColor = System.Drawing.Color.Transparent;
-            this.selectFolderLabel.Font = new System.Drawing.Font("NuberNext Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectFolderLabel.ForeColor = System.Drawing.Color.White;
-            this.selectFolderLabel.Location = new System.Drawing.Point(144, 32);
-            this.selectFolderLabel.Name = "selectFolderLabel";
-            this.selectFolderLabel.Size = new System.Drawing.Size(97, 19);
-            this.selectFolderLabel.TabIndex = 1;
-            this.selectFolderLabel.Text = "Select Folder";
-            this.selectFolderLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SelectFolderLabel.AutoSize = true;
+            this.SelectFolderLabel.BackColor = System.Drawing.Color.Transparent;
+            this.SelectFolderLabel.Font = new System.Drawing.Font("NuberNext Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectFolderLabel.ForeColor = System.Drawing.Color.White;
+            this.SelectFolderLabel.Location = new System.Drawing.Point(144, 32);
+            this.SelectFolderLabel.Name = "SelectFolderLabel";
+            this.SelectFolderLabel.Size = new System.Drawing.Size(97, 19);
+            this.SelectFolderLabel.TabIndex = 1;
+            this.SelectFolderLabel.Text = "Select Folder";
+            this.SelectFolderLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // edinfoCheckbox
+            // GradientCheckbox
             // 
-            this.edinfoCheckbox.AutoSize = true;
-            this.edinfoCheckbox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.edinfoCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.edinfoCheckbox.ForeColor = System.Drawing.Color.White;
-            this.edinfoCheckbox.Location = new System.Drawing.Point(185, 52);
-            this.edinfoCheckbox.Name = "edinfoCheckbox";
-            this.edinfoCheckbox.Size = new System.Drawing.Size(64, 20);
-            this.edinfoCheckbox.TabIndex = 24;
-            this.edinfoCheckbox.Text = "Edinfo";
-            this.edinfoCheckbox.UseVisualStyleBackColor = true;
+            this.GradientCheckbox.AutoSize = true;
+            this.GradientCheckbox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.GradientCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GradientCheckbox.ForeColor = System.Drawing.Color.White;
+            this.GradientCheckbox.Location = new System.Drawing.Point(185, 52);
+            this.GradientCheckbox.Name = "GradientCheckbox";
+            this.GradientCheckbox.Size = new System.Drawing.Size(64, 20);
+            this.GradientCheckbox.TabIndex = 24;
+            this.GradientCheckbox.Text = "Edinfo";
+            this.GradientCheckbox.UseVisualStyleBackColor = true;
             // 
-            // terrainCheckBox
+            // TerrainCheckBox
             // 
-            this.terrainCheckBox.AutoSize = true;
-            this.terrainCheckBox.BackColor = System.Drawing.Color.Transparent;
-            this.terrainCheckBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.terrainCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.terrainCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.terrainCheckBox.ForeColor = System.Drawing.Color.White;
-            this.terrainCheckBox.Location = new System.Drawing.Point(10, 52);
-            this.terrainCheckBox.Name = "terrainCheckBox";
-            this.terrainCheckBox.Size = new System.Drawing.Size(69, 20);
-            this.terrainCheckBox.TabIndex = 23;
-            this.terrainCheckBox.Text = "Terrain";
-            this.terrainCheckBox.UseVisualStyleBackColor = false;
+            this.TerrainCheckBox.AutoSize = true;
+            this.TerrainCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.TerrainCheckBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TerrainCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.TerrainCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TerrainCheckBox.ForeColor = System.Drawing.Color.White;
+            this.TerrainCheckBox.Location = new System.Drawing.Point(10, 52);
+            this.TerrainCheckBox.Name = "TerrainCheckBox";
+            this.TerrainCheckBox.Size = new System.Drawing.Size(69, 20);
+            this.TerrainCheckBox.TabIndex = 23;
+            this.TerrainCheckBox.Text = "Terrain";
+            this.TerrainCheckBox.UseVisualStyleBackColor = false;
             // 
             // AllCheckBox
             // 
@@ -212,19 +212,19 @@
             this.BillboardCheckBox.Text = "Billboards";
             this.BillboardCheckBox.UseVisualStyleBackColor = true;
             // 
-            // ToFactorRadioButton
+            // ToTerrainScaleRadioButton
             // 
-            this.ToFactorRadioButton.AutoSize = true;
-            this.ToFactorRadioButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ToFactorRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ToFactorRadioButton.Location = new System.Drawing.Point(18, 86);
-            this.ToFactorRadioButton.Name = "ToFactorRadioButton";
-            this.ToFactorRadioButton.Size = new System.Drawing.Size(224, 28);
-            this.ToFactorRadioButton.TabIndex = 15;
-            this.ToFactorRadioButton.TabStop = true;
-            this.ToFactorRadioButton.Text = "Scale to terrain.hf Scale";
-            this.ToFactorRadioButton.UseVisualStyleBackColor = true;
-            this.ToFactorRadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckChanged);
+            this.ToTerrainScaleRadioButton.AutoSize = true;
+            this.ToTerrainScaleRadioButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ToTerrainScaleRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ToTerrainScaleRadioButton.Location = new System.Drawing.Point(18, 86);
+            this.ToTerrainScaleRadioButton.Name = "ToTerrainScaleRadioButton";
+            this.ToTerrainScaleRadioButton.Size = new System.Drawing.Size(224, 28);
+            this.ToTerrainScaleRadioButton.TabIndex = 15;
+            this.ToTerrainScaleRadioButton.TabStop = true;
+            this.ToTerrainScaleRadioButton.Text = "Scale to terrain.hf Scale";
+            this.ToTerrainScaleRadioButton.UseVisualStyleBackColor = true;
+            this.ToTerrainScaleRadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckChanged);
             // 
             // ByFactorRadioButton
             // 
@@ -251,16 +251,16 @@
             this.methodErrLabel.Text = "label5";
             this.methodErrLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // fileCheckErrLabel
+            // FileCheckErrLabel
             // 
-            this.fileCheckErrLabel.BackColor = System.Drawing.Color.Transparent;
-            this.fileCheckErrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fileCheckErrLabel.Location = new System.Drawing.Point(148, 209);
-            this.fileCheckErrLabel.Name = "fileCheckErrLabel";
-            this.fileCheckErrLabel.Size = new System.Drawing.Size(254, 18);
-            this.fileCheckErrLabel.TabIndex = 10;
-            this.fileCheckErrLabel.Text = "label3";
-            this.fileCheckErrLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.FileCheckErrLabel.BackColor = System.Drawing.Color.Transparent;
+            this.FileCheckErrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FileCheckErrLabel.Location = new System.Drawing.Point(148, 209);
+            this.FileCheckErrLabel.Name = "FileCheckErrLabel";
+            this.FileCheckErrLabel.Size = new System.Drawing.Size(254, 18);
+            this.FileCheckErrLabel.TabIndex = 10;
+            this.FileCheckErrLabel.Text = "label3";
+            this.FileCheckErrLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ScaleButton
             // 
@@ -280,80 +280,80 @@
             this.ScaleButton.UseVisualStyleBackColor = false;
             this.ScaleButton.Click += new System.EventHandler(this.ScaleButton_Click);
             // 
-            // UserInputTextBox
+            // UserInputScaleTextBox
             // 
-            this.UserInputTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.UserInputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.UserInputTextBox.Font = new System.Drawing.Font("NuberNext Black", 14F, System.Drawing.FontStyle.Bold);
-            this.UserInputTextBox.ForeColor = System.Drawing.Color.White;
-            this.UserInputTextBox.Location = new System.Drawing.Point(59, 45);
-            this.UserInputTextBox.MaxLength = 14;
-            this.UserInputTextBox.Name = "UserInputTextBox";
-            this.UserInputTextBox.Size = new System.Drawing.Size(120, 26);
-            this.UserInputTextBox.TabIndex = 11;
-            this.UserInputTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.UserInputTextBox.TextChanged += new System.EventHandler(this.UserInputTextBox_TextChanged);
-            this.UserInputTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UserInputTextBox_KeyPress);
+            this.UserInputScaleTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.UserInputScaleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UserInputScaleTextBox.Font = new System.Drawing.Font("NuberNext Black", 14F, System.Drawing.FontStyle.Bold);
+            this.UserInputScaleTextBox.ForeColor = System.Drawing.Color.White;
+            this.UserInputScaleTextBox.Location = new System.Drawing.Point(59, 45);
+            this.UserInputScaleTextBox.MaxLength = 14;
+            this.UserInputScaleTextBox.Name = "UserInputScaleTextBox";
+            this.UserInputScaleTextBox.Size = new System.Drawing.Size(120, 26);
+            this.UserInputScaleTextBox.TabIndex = 11;
+            this.UserInputScaleTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.UserInputScaleTextBox.TextChanged += new System.EventHandler(this.UserInputTextBox_TextChanged);
+            this.UserInputScaleTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UserInputTextBox_KeyPress);
             // 
-            // progressLabel
+            // ProgressLabel
             // 
-            this.progressLabel.BackColor = System.Drawing.Color.Transparent;
-            this.progressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.progressLabel.Location = new System.Drawing.Point(145, 447);
-            this.progressLabel.Name = "progressLabel";
-            this.progressLabel.Size = new System.Drawing.Size(556, 25);
-            this.progressLabel.TabIndex = 19;
-            this.progressLabel.Text = "label7";
-            this.progressLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ProgressLabel.BackColor = System.Drawing.Color.Transparent;
+            this.ProgressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProgressLabel.Location = new System.Drawing.Point(145, 447);
+            this.ProgressLabel.Name = "ProgressLabel";
+            this.ProgressLabel.Size = new System.Drawing.Size(556, 25);
+            this.ProgressLabel.TabIndex = 19;
+            this.ProgressLabel.Text = "label7";
+            this.ProgressLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // userInputErrLabel
+            // UserInputErrLabel
             // 
-            this.userInputErrLabel.BackColor = System.Drawing.Color.Transparent;
-            this.userInputErrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userInputErrLabel.Location = new System.Drawing.Point(148, 350);
-            this.userInputErrLabel.Name = "userInputErrLabel";
-            this.userInputErrLabel.Size = new System.Drawing.Size(254, 16);
-            this.userInputErrLabel.TabIndex = 12;
-            this.userInputErrLabel.Text = "label4";
-            this.userInputErrLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.UserInputErrLabel.BackColor = System.Drawing.Color.Transparent;
+            this.UserInputErrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserInputErrLabel.Location = new System.Drawing.Point(148, 350);
+            this.UserInputErrLabel.Name = "UserInputErrLabel";
+            this.UserInputErrLabel.Size = new System.Drawing.Size(254, 16);
+            this.UserInputErrLabel.TabIndex = 12;
+            this.UserInputErrLabel.Text = "label4";
+            this.UserInputErrLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // filenameLabel
+            // TrackDirectoryLabel
             // 
-            this.filenameLabel.BackColor = System.Drawing.Color.Transparent;
-            this.filenameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filenameLabel.Location = new System.Drawing.Point(288, 29);
-            this.filenameLabel.Name = "filenameLabel";
-            this.filenameLabel.Size = new System.Drawing.Size(406, 25);
-            this.filenameLabel.TabIndex = 2;
-            this.filenameLabel.Text = "label2";
-            this.filenameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TrackDirectoryLabel.BackColor = System.Drawing.Color.Transparent;
+            this.TrackDirectoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TrackDirectoryLabel.Location = new System.Drawing.Point(288, 31);
+            this.TrackDirectoryLabel.Name = "TrackDirectoryLabel";
+            this.TrackDirectoryLabel.Size = new System.Drawing.Size(406, 25);
+            this.TrackDirectoryLabel.TabIndex = 2;
+            this.TrackDirectoryLabel.Text = "label2";
+            this.TrackDirectoryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // disableScaleYCheckBox
+            // DisableScaleYCheckBox
             // 
-            this.disableScaleYCheckBox.AutoSize = true;
-            this.disableScaleYCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.disableScaleYCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.disableScaleYCheckBox.ForeColor = System.Drawing.Color.White;
-            this.disableScaleYCheckBox.Location = new System.Drawing.Point(39, 45);
-            this.disableScaleYCheckBox.Name = "disableScaleYCheckBox";
-            this.disableScaleYCheckBox.Size = new System.Drawing.Size(175, 20);
-            this.disableScaleYCheckBox.TabIndex = 28;
-            this.disableScaleYCheckBox.Text = "Disable y-value Scaling?";
-            this.yscalingtoolTip.SetToolTip(this.disableScaleYCheckBox, "Checking this will disable the scaling of y-values in statues/billboards.");
-            this.disableScaleYCheckBox.UseVisualStyleBackColor = true;
+            this.DisableScaleYCheckBox.AutoSize = true;
+            this.DisableScaleYCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DisableScaleYCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DisableScaleYCheckBox.ForeColor = System.Drawing.Color.White;
+            this.DisableScaleYCheckBox.Location = new System.Drawing.Point(39, 45);
+            this.DisableScaleYCheckBox.Name = "DisableScaleYCheckBox";
+            this.DisableScaleYCheckBox.Size = new System.Drawing.Size(175, 20);
+            this.DisableScaleYCheckBox.TabIndex = 28;
+            this.DisableScaleYCheckBox.Text = "Disable y-value Scaling?";
+            this.VerticalScalingTooltip.SetToolTip(this.DisableScaleYCheckBox, "Checking this will disable the scaling of y-values in statues/billboards.");
+            this.DisableScaleYCheckBox.UseVisualStyleBackColor = true;
             // 
-            // yscalingtoolTip
+            // VerticalScalingTooltip
             // 
-            this.yscalingtoolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.yscalingtoolTip.ToolTipTitle = "Disable y-value Scaling";
+            this.VerticalScalingTooltip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.VerticalScalingTooltip.ToolTipTitle = "Disable y-value Scaling";
             // 
             // sideMenuPanel
             // 
             this.sideMenuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.sideMenuPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sideMenuPanel.Controls.Add(this.authorLabel);
-            this.sideMenuPanel.Controls.Add(this.label1);
-            this.sideMenuPanel.Controls.Add(this.exitButton);
+            this.sideMenuPanel.Controls.Add(this.AuthorLabel);
+            this.sideMenuPanel.Controls.Add(this.TitleLabel);
+            this.sideMenuPanel.Controls.Add(this.ExitButton);
             this.sideMenuPanel.Controls.Add(this.pictureBox1);
             this.sideMenuPanel.Controls.Add(this.pictureBox3);
             this.sideMenuPanel.Controls.Add(this.pictureBox2);
@@ -362,44 +362,286 @@
             this.sideMenuPanel.Size = new System.Drawing.Size(133, 483);
             this.sideMenuPanel.TabIndex = 29;
             // 
-            // authorLabel
+            // AuthorLabel
             // 
-            this.authorLabel.BackColor = System.Drawing.Color.Transparent;
-            this.authorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.authorLabel.ForeColor = System.Drawing.Color.White;
-            this.authorLabel.Location = new System.Drawing.Point(10, 63);
-            this.authorLabel.Name = "authorLabel";
-            this.authorLabel.Size = new System.Drawing.Size(114, 23);
-            this.authorLabel.TabIndex = 30;
-            this.authorLabel.Text = "Jakob Hubbard";
-            this.authorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AuthorLabel.BackColor = System.Drawing.Color.Transparent;
+            this.AuthorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AuthorLabel.ForeColor = System.Drawing.Color.White;
+            this.AuthorLabel.Location = new System.Drawing.Point(10, 63);
+            this.AuthorLabel.Name = "AuthorLabel";
+            this.AuthorLabel.Size = new System.Drawing.Size(114, 23);
+            this.AuthorLabel.TabIndex = 30;
+            this.AuthorLabel.Text = "Jakob Hubbard";
+            this.AuthorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // TitleLabel
             // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("NuberNext Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(5, 1);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 77);
-            this.label1.TabIndex = 30;
-            this.label1.Text = "MX Simulator Track Scaler";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.TitleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.TitleLabel.Font = new System.Drawing.Font("NuberNext Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TitleLabel.ForeColor = System.Drawing.Color.White;
+            this.TitleLabel.Location = new System.Drawing.Point(5, 1);
+            this.TitleLabel.Name = "TitleLabel";
+            this.TitleLabel.Size = new System.Drawing.Size(121, 77);
+            this.TitleLabel.TabIndex = 30;
+            this.TitleLabel.Text = "MX Simulator Track Scaler";
+            this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // exitButton
+            // ExitButton
             // 
-            this.exitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.exitButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitButton.Font = new System.Drawing.Font("NuberNext Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitButton.ForeColor = System.Drawing.Color.White;
-            this.exitButton.Location = new System.Drawing.Point(-1, 439);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(133, 42);
-            this.exitButton.TabIndex = 30;
-            this.exitButton.Text = "Exit";
-            this.exitButton.UseVisualStyleBackColor = false;
-            this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            this.ExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.ExitButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitButton.Font = new System.Drawing.Font("NuberNext Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExitButton.ForeColor = System.Drawing.Color.White;
+            this.ExitButton.Location = new System.Drawing.Point(-1, 439);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(133, 42);
+            this.ExitButton.TabIndex = 30;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.UseVisualStyleBackColor = false;
+            this.ExitButton.EnabledChanged += new System.EventHandler(this.ExitButton_EnabledChanged);
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            this.ExitButton.Paint += new System.Windows.Forms.PaintEventHandler(this.ExitButton_Paint);
+            // 
+            // FilesToScalePanel
+            // 
+            this.FilesToScalePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.FilesToScalePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FilesToScalePanel.Controls.Add(this.fileIconBox);
+            this.FilesToScalePanel.Controls.Add(this.GradientCheckbox);
+            this.FilesToScalePanel.Controls.Add(this.FilesToScaleLabel);
+            this.FilesToScalePanel.Controls.Add(this.TerrainCheckBox);
+            this.FilesToScalePanel.Controls.Add(this.FlaggersCheckBox);
+            this.FilesToScalePanel.Controls.Add(this.AllCheckBox);
+            this.FilesToScalePanel.Controls.Add(this.BillboardCheckBox);
+            this.FilesToScalePanel.Controls.Add(this.TimingGateCheckBox);
+            this.FilesToScalePanel.Controls.Add(this.StatueCheckBox);
+            this.FilesToScalePanel.Controls.Add(this.DecalsCheckBox);
+            this.FilesToScalePanel.ForeColor = System.Drawing.Color.White;
+            this.FilesToScalePanel.Location = new System.Drawing.Point(148, 64);
+            this.FilesToScalePanel.Name = "FilesToScalePanel";
+            this.FilesToScalePanel.Size = new System.Drawing.Size(254, 142);
+            this.FilesToScalePanel.TabIndex = 10;
+            // 
+            // FilesToScaleLabel
+            // 
+            this.FilesToScaleLabel.AutoSize = true;
+            this.FilesToScaleLabel.Font = new System.Drawing.Font("NuberNext Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FilesToScaleLabel.ForeColor = System.Drawing.Color.LightGray;
+            this.FilesToScaleLabel.Location = new System.Drawing.Point(41, 12);
+            this.FilesToScaleLabel.Name = "FilesToScaleLabel";
+            this.FilesToScaleLabel.Size = new System.Drawing.Size(152, 31);
+            this.FilesToScaleLabel.TabIndex = 14;
+            this.FilesToScaleLabel.Text = "Files to Scale";
+            // 
+            // ScaleMethodPanel
+            // 
+            this.ScaleMethodPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.ScaleMethodPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ScaleMethodPanel.Controls.Add(this.methodIconBox);
+            this.ScaleMethodPanel.Controls.Add(this.ToTerrainScaleRadioButton);
+            this.ScaleMethodPanel.Controls.Add(this.ScaleMethodLabel);
+            this.ScaleMethodPanel.Controls.Add(this.ByFactorRadioButton);
+            this.ScaleMethodPanel.ForeColor = System.Drawing.Color.White;
+            this.ScaleMethodPanel.Location = new System.Drawing.Point(440, 64);
+            this.ScaleMethodPanel.Name = "ScaleMethodPanel";
+            this.ScaleMethodPanel.Size = new System.Drawing.Size(254, 142);
+            this.ScaleMethodPanel.TabIndex = 25;
+            // 
+            // ScaleMethodLabel
+            // 
+            this.ScaleMethodLabel.AutoSize = true;
+            this.ScaleMethodLabel.Font = new System.Drawing.Font("NuberNext Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ScaleMethodLabel.ForeColor = System.Drawing.Color.LightGray;
+            this.ScaleMethodLabel.Location = new System.Drawing.Point(46, 12);
+            this.ScaleMethodLabel.Name = "ScaleMethodLabel";
+            this.ScaleMethodLabel.Size = new System.Drawing.Size(155, 31);
+            this.ScaleMethodLabel.TabIndex = 14;
+            this.ScaleMethodLabel.Text = "Scale Method";
+            // 
+            // FactorScalePanel
+            // 
+            this.FactorScalePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.FactorScalePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FactorScalePanel.Controls.Add(this.scaleIconBox);
+            this.FactorScalePanel.Controls.Add(this.NewTrackSizeLabel);
+            this.FactorScalePanel.Controls.Add(this.FactorScaleLabel);
+            this.FactorScalePanel.Controls.Add(this.UserInputScaleTextBox);
+            this.FactorScalePanel.ForeColor = System.Drawing.Color.White;
+            this.FactorScalePanel.Location = new System.Drawing.Point(148, 230);
+            this.FactorScalePanel.Name = "FactorScalePanel";
+            this.FactorScalePanel.Size = new System.Drawing.Size(254, 117);
+            this.FactorScalePanel.TabIndex = 26;
+            // 
+            // NewTrackSizeLabel
+            // 
+            this.NewTrackSizeLabel.BackColor = System.Drawing.Color.Transparent;
+            this.NewTrackSizeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewTrackSizeLabel.Location = new System.Drawing.Point(-1, 82);
+            this.NewTrackSizeLabel.Name = "NewTrackSizeLabel";
+            this.NewTrackSizeLabel.Size = new System.Drawing.Size(254, 18);
+            this.NewTrackSizeLabel.TabIndex = 30;
+            this.NewTrackSizeLabel.Text = "New Track Size";
+            this.NewTrackSizeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // FactorScaleLabel
+            // 
+            this.FactorScaleLabel.AutoSize = true;
+            this.FactorScaleLabel.Font = new System.Drawing.Font("NuberNext Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FactorScaleLabel.ForeColor = System.Drawing.Color.LightGray;
+            this.FactorScaleLabel.Location = new System.Drawing.Point(48, 9);
+            this.FactorScaleLabel.Name = "FactorScaleLabel";
+            this.FactorScaleLabel.Size = new System.Drawing.Size(147, 31);
+            this.FactorScaleLabel.TabIndex = 14;
+            this.FactorScaleLabel.Text = "Factor/Scale";
+            // 
+            // ExtraOptionsPanel
+            // 
+            this.ExtraOptionsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.ExtraOptionsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ExtraOptionsPanel.Controls.Add(this.MirroredCheckbox);
+            this.ExtraOptionsPanel.Controls.Add(this.pictureBox4);
+            this.ExtraOptionsPanel.Controls.Add(this.ExtraOptionsLabel);
+            this.ExtraOptionsPanel.Controls.Add(this.DisableScaleYCheckBox);
+            this.ExtraOptionsPanel.ForeColor = System.Drawing.Color.White;
+            this.ExtraOptionsPanel.Location = new System.Drawing.Point(440, 230);
+            this.ExtraOptionsPanel.Name = "ExtraOptionsPanel";
+            this.ExtraOptionsPanel.Size = new System.Drawing.Size(254, 117);
+            this.ExtraOptionsPanel.TabIndex = 27;
+            // 
+            // MirroredCheckbox
+            // 
+            this.MirroredCheckbox.AutoSize = true;
+            this.MirroredCheckbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.MirroredCheckbox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MirroredCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MirroredCheckbox.ForeColor = System.Drawing.Color.White;
+            this.MirroredCheckbox.Location = new System.Drawing.Point(39, 71);
+            this.MirroredCheckbox.Name = "MirroredCheckbox";
+            this.MirroredCheckbox.Size = new System.Drawing.Size(76, 20);
+            this.MirroredCheckbox.TabIndex = 32;
+            this.MirroredCheckbox.Text = "Mirrored";
+            this.MirrorTooltip.SetToolTip(this.MirroredCheckbox, "This mirrors the terrain along with all the objects on the track");
+            this.MirroredCheckbox.UseVisualStyleBackColor = false;
+            // 
+            // ExtraOptionsLabel
+            // 
+            this.ExtraOptionsLabel.AutoSize = true;
+            this.ExtraOptionsLabel.Font = new System.Drawing.Font("NuberNext Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExtraOptionsLabel.ForeColor = System.Drawing.Color.LightGray;
+            this.ExtraOptionsLabel.Location = new System.Drawing.Point(48, 9);
+            this.ExtraOptionsLabel.Name = "ExtraOptionsLabel";
+            this.ExtraOptionsLabel.Size = new System.Drawing.Size(157, 31);
+            this.ExtraOptionsLabel.TabIndex = 14;
+            this.ExtraOptionsLabel.Text = "Extra Options";
+            // 
+            // MirrorTooltip
+            // 
+            this.MirrorTooltip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.MirrorTooltip.ToolTipTitle = "Mirrored";
+            // 
+            // ExtraOptionsErrLabel
+            // 
+            this.ExtraOptionsErrLabel.BackColor = System.Drawing.Color.Transparent;
+            this.ExtraOptionsErrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExtraOptionsErrLabel.Location = new System.Drawing.Point(440, 350);
+            this.ExtraOptionsErrLabel.Name = "ExtraOptionsErrLabel";
+            this.ExtraOptionsErrLabel.Size = new System.Drawing.Size(254, 16);
+            this.ExtraOptionsErrLabel.TabIndex = 33;
+            this.ExtraOptionsErrLabel.Text = "label6";
+            this.ExtraOptionsErrLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ScalingProgressBar
+            // 
+            this.ScalingProgressBar.Location = new System.Drawing.Point(241, 433);
+            this.ScalingProgressBar.Name = "ScalingProgressBar";
+            this.ScalingProgressBar.Size = new System.Drawing.Size(376, 11);
+            this.ScalingProgressBar.TabIndex = 26;
+            this.ScalingProgressBar.UseWaitCursor = true;
+            this.ScalingProgressBar.Visible = false;
+            // 
+            // MinimizeButton
+            // 
+            this.MinimizeButton.BackColor = System.Drawing.Color.Transparent;
+            this.MinimizeButton.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.minimizeicon;
+            this.MinimizeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.MinimizeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MinimizeButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.MinimizeButton.FlatAppearance.BorderSize = 0;
+            this.MinimizeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.MinimizeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.MinimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MinimizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinimizeButton.ForeColor = System.Drawing.Color.White;
+            this.MinimizeButton.Location = new System.Drawing.Point(662, 5);
+            this.MinimizeButton.Name = "MinimizeButton";
+            this.MinimizeButton.Size = new System.Drawing.Size(26, 28);
+            this.MinimizeButton.TabIndex = 32;
+            this.MinimizeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MinimizeButton.UseVisualStyleBackColor = false;
+            this.MinimizeButton.Click += new System.EventHandler(this.MinimizeButton_Click);
+            // 
+            // ExitButton2
+            // 
+            this.ExitButton2.BackColor = System.Drawing.Color.Transparent;
+            this.ExitButton2.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.exiticon;
+            this.ExitButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ExitButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ExitButton2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.ExitButton2.FlatAppearance.BorderSize = 0;
+            this.ExitButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.ExitButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.ExitButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExitButton2.ForeColor = System.Drawing.Color.White;
+            this.ExitButton2.Location = new System.Drawing.Point(689, 5);
+            this.ExitButton2.Name = "ExitButton2";
+            this.ExitButton2.Size = new System.Drawing.Size(23, 28);
+            this.ExitButton2.TabIndex = 30;
+            this.ExitButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.ExitButton2.UseVisualStyleBackColor = false;
+            this.ExitButton2.EnabledChanged += new System.EventHandler(this.ExitButton2_EnabledChanged);
+            this.ExitButton2.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.options_icon;
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox4.Location = new System.Drawing.Point(9, 9);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(29, 24);
+            this.pictureBox4.TabIndex = 31;
+            this.pictureBox4.TabStop = false;
+            // 
+            // scaleIconBox
+            // 
+            this.scaleIconBox.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.scale_icon;
+            this.scaleIconBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.scaleIconBox.Location = new System.Drawing.Point(10, 9);
+            this.scaleIconBox.Name = "scaleIconBox";
+            this.scaleIconBox.Size = new System.Drawing.Size(33, 35);
+            this.scaleIconBox.TabIndex = 27;
+            this.scaleIconBox.TabStop = false;
+            // 
+            // methodIconBox
+            // 
+            this.methodIconBox.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.method_icon;
+            this.methodIconBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.methodIconBox.Location = new System.Drawing.Point(11, 10);
+            this.methodIconBox.Name = "methodIconBox";
+            this.methodIconBox.Size = new System.Drawing.Size(33, 35);
+            this.methodIconBox.TabIndex = 26;
+            this.methodIconBox.TabStop = false;
+            // 
+            // fileIconBox
+            // 
+            this.fileIconBox.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources._263103;
+            this.fileIconBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.fileIconBox.Location = new System.Drawing.Point(8, 7);
+            this.fileIconBox.Name = "fileIconBox";
+            this.fileIconBox.Size = new System.Drawing.Size(25, 35);
+            this.fileIconBox.TabIndex = 25;
+            this.fileIconBox.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -431,205 +673,6 @@
             this.pictureBox2.TabIndex = 25;
             this.pictureBox2.TabStop = false;
             // 
-            // filesToScalePanel
-            // 
-            this.filesToScalePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.filesToScalePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.filesToScalePanel.Controls.Add(this.fileIconBox);
-            this.filesToScalePanel.Controls.Add(this.edinfoCheckbox);
-            this.filesToScalePanel.Controls.Add(this.filesToScaleLabel);
-            this.filesToScalePanel.Controls.Add(this.terrainCheckBox);
-            this.filesToScalePanel.Controls.Add(this.FlaggersCheckBox);
-            this.filesToScalePanel.Controls.Add(this.AllCheckBox);
-            this.filesToScalePanel.Controls.Add(this.BillboardCheckBox);
-            this.filesToScalePanel.Controls.Add(this.TimingGateCheckBox);
-            this.filesToScalePanel.Controls.Add(this.StatueCheckBox);
-            this.filesToScalePanel.Controls.Add(this.DecalsCheckBox);
-            this.filesToScalePanel.ForeColor = System.Drawing.Color.White;
-            this.filesToScalePanel.Location = new System.Drawing.Point(148, 64);
-            this.filesToScalePanel.Name = "filesToScalePanel";
-            this.filesToScalePanel.Size = new System.Drawing.Size(254, 142);
-            this.filesToScalePanel.TabIndex = 10;
-            // 
-            // fileIconBox
-            // 
-            this.fileIconBox.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources._263103;
-            this.fileIconBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.fileIconBox.Location = new System.Drawing.Point(8, 7);
-            this.fileIconBox.Name = "fileIconBox";
-            this.fileIconBox.Size = new System.Drawing.Size(25, 35);
-            this.fileIconBox.TabIndex = 25;
-            this.fileIconBox.TabStop = false;
-            // 
-            // filesToScaleLabel
-            // 
-            this.filesToScaleLabel.AutoSize = true;
-            this.filesToScaleLabel.Font = new System.Drawing.Font("NuberNext Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filesToScaleLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.filesToScaleLabel.Location = new System.Drawing.Point(41, 12);
-            this.filesToScaleLabel.Name = "filesToScaleLabel";
-            this.filesToScaleLabel.Size = new System.Drawing.Size(152, 31);
-            this.filesToScaleLabel.TabIndex = 14;
-            this.filesToScaleLabel.Text = "Files to Scale";
-            // 
-            // scaleMethodPanel
-            // 
-            this.scaleMethodPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.scaleMethodPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.scaleMethodPanel.Controls.Add(this.methodIconBox);
-            this.scaleMethodPanel.Controls.Add(this.ToFactorRadioButton);
-            this.scaleMethodPanel.Controls.Add(this.scaleMethodLabel);
-            this.scaleMethodPanel.Controls.Add(this.ByFactorRadioButton);
-            this.scaleMethodPanel.ForeColor = System.Drawing.Color.White;
-            this.scaleMethodPanel.Location = new System.Drawing.Point(440, 64);
-            this.scaleMethodPanel.Name = "scaleMethodPanel";
-            this.scaleMethodPanel.Size = new System.Drawing.Size(254, 142);
-            this.scaleMethodPanel.TabIndex = 25;
-            // 
-            // methodIconBox
-            // 
-            this.methodIconBox.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.method_icon;
-            this.methodIconBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.methodIconBox.Location = new System.Drawing.Point(11, 10);
-            this.methodIconBox.Name = "methodIconBox";
-            this.methodIconBox.Size = new System.Drawing.Size(33, 35);
-            this.methodIconBox.TabIndex = 26;
-            this.methodIconBox.TabStop = false;
-            // 
-            // scaleMethodLabel
-            // 
-            this.scaleMethodLabel.AutoSize = true;
-            this.scaleMethodLabel.Font = new System.Drawing.Font("NuberNext Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scaleMethodLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.scaleMethodLabel.Location = new System.Drawing.Point(46, 12);
-            this.scaleMethodLabel.Name = "scaleMethodLabel";
-            this.scaleMethodLabel.Size = new System.Drawing.Size(155, 31);
-            this.scaleMethodLabel.TabIndex = 14;
-            this.scaleMethodLabel.Text = "Scale Method";
-            // 
-            // factorScalePanel
-            // 
-            this.factorScalePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.factorScalePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.factorScalePanel.Controls.Add(this.scaleIconBox);
-            this.factorScalePanel.Controls.Add(this.newTrackSizeLabel);
-            this.factorScalePanel.Controls.Add(this.factorScaleLabel);
-            this.factorScalePanel.Controls.Add(this.UserInputTextBox);
-            this.factorScalePanel.ForeColor = System.Drawing.Color.White;
-            this.factorScalePanel.Location = new System.Drawing.Point(148, 230);
-            this.factorScalePanel.Name = "factorScalePanel";
-            this.factorScalePanel.Size = new System.Drawing.Size(254, 117);
-            this.factorScalePanel.TabIndex = 26;
-            // 
-            // scaleIconBox
-            // 
-            this.scaleIconBox.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.scale_icon;
-            this.scaleIconBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.scaleIconBox.Location = new System.Drawing.Point(10, 9);
-            this.scaleIconBox.Name = "scaleIconBox";
-            this.scaleIconBox.Size = new System.Drawing.Size(33, 35);
-            this.scaleIconBox.TabIndex = 27;
-            this.scaleIconBox.TabStop = false;
-            // 
-            // newTrackSizeLabel
-            // 
-            this.newTrackSizeLabel.BackColor = System.Drawing.Color.Transparent;
-            this.newTrackSizeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newTrackSizeLabel.Location = new System.Drawing.Point(-1, 82);
-            this.newTrackSizeLabel.Name = "newTrackSizeLabel";
-            this.newTrackSizeLabel.Size = new System.Drawing.Size(254, 18);
-            this.newTrackSizeLabel.TabIndex = 30;
-            this.newTrackSizeLabel.Text = "New Track Size";
-            this.newTrackSizeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // factorScaleLabel
-            // 
-            this.factorScaleLabel.AutoSize = true;
-            this.factorScaleLabel.Font = new System.Drawing.Font("NuberNext Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.factorScaleLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.factorScaleLabel.Location = new System.Drawing.Point(48, 9);
-            this.factorScaleLabel.Name = "factorScaleLabel";
-            this.factorScaleLabel.Size = new System.Drawing.Size(147, 31);
-            this.factorScaleLabel.TabIndex = 14;
-            this.factorScaleLabel.Text = "Factor/Scale";
-            // 
-            // extraOptionsPanel
-            // 
-            this.extraOptionsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.extraOptionsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.extraOptionsPanel.Controls.Add(this.mirroredCheckbox);
-            this.extraOptionsPanel.Controls.Add(this.pictureBox4);
-            this.extraOptionsPanel.Controls.Add(this.extraOptionsLabel);
-            this.extraOptionsPanel.Controls.Add(this.disableScaleYCheckBox);
-            this.extraOptionsPanel.ForeColor = System.Drawing.Color.White;
-            this.extraOptionsPanel.Location = new System.Drawing.Point(440, 230);
-            this.extraOptionsPanel.Name = "extraOptionsPanel";
-            this.extraOptionsPanel.Size = new System.Drawing.Size(254, 117);
-            this.extraOptionsPanel.TabIndex = 27;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.options_icon;
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox4.Location = new System.Drawing.Point(9, 9);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(29, 24);
-            this.pictureBox4.TabIndex = 31;
-            this.pictureBox4.TabStop = false;
-            // 
-            // extraOptionsLabel
-            // 
-            this.extraOptionsLabel.AutoSize = true;
-            this.extraOptionsLabel.Font = new System.Drawing.Font("NuberNext Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.extraOptionsLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.extraOptionsLabel.Location = new System.Drawing.Point(48, 9);
-            this.extraOptionsLabel.Name = "extraOptionsLabel";
-            this.extraOptionsLabel.Size = new System.Drawing.Size(157, 31);
-            this.extraOptionsLabel.TabIndex = 14;
-            this.extraOptionsLabel.Text = "Extra Options";
-            // 
-            // minimizeButton
-            // 
-            this.minimizeButton.BackColor = System.Drawing.Color.Transparent;
-            this.minimizeButton.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.minimizeicon;
-            this.minimizeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.minimizeButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.minimizeButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.minimizeButton.FlatAppearance.BorderSize = 0;
-            this.minimizeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.minimizeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.minimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.minimizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.minimizeButton.ForeColor = System.Drawing.Color.White;
-            this.minimizeButton.Location = new System.Drawing.Point(662, 5);
-            this.minimizeButton.Name = "minimizeButton";
-            this.minimizeButton.Size = new System.Drawing.Size(26, 28);
-            this.minimizeButton.TabIndex = 32;
-            this.minimizeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.minimizeButton.UseVisualStyleBackColor = false;
-            this.minimizeButton.Click += new System.EventHandler(this.MinimizeButton_Click);
-            // 
-            // exitButton2
-            // 
-            this.exitButton2.BackColor = System.Drawing.Color.Transparent;
-            this.exitButton2.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.exiticon;
-            this.exitButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.exitButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.exitButton2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.exitButton2.FlatAppearance.BorderSize = 0;
-            this.exitButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.exitButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.exitButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitButton2.ForeColor = System.Drawing.Color.White;
-            this.exitButton2.Location = new System.Drawing.Point(689, 5);
-            this.exitButton2.Name = "exitButton2";
-            this.exitButton2.Size = new System.Drawing.Size(23, 28);
-            this.exitButton2.TabIndex = 30;
-            this.exitButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.exitButton2.UseVisualStyleBackColor = false;
-            this.exitButton2.Click += new System.EventHandler(this.ExitButton_Click);
-            // 
             // OpenFolderButton
             // 
             this.OpenFolderButton.BackColor = System.Drawing.Color.Transparent;
@@ -651,45 +694,6 @@
             this.OpenFolderButton.UseVisualStyleBackColor = false;
             this.OpenFolderButton.Click += new System.EventHandler(this.OpenFolderButton_Click);
             // 
-            // progressBar
-            // 
-            this.progressBar.Location = new System.Drawing.Point(241, 433);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(376, 11);
-            this.progressBar.TabIndex = 26;
-            this.progressBar.UseWaitCursor = true;
-            this.progressBar.Visible = false;
-            // 
-            // mirroredCheckbox
-            // 
-            this.mirroredCheckbox.AutoSize = true;
-            this.mirroredCheckbox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.mirroredCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mirroredCheckbox.ForeColor = System.Drawing.Color.White;
-            this.mirroredCheckbox.Location = new System.Drawing.Point(39, 71);
-            this.mirroredCheckbox.Name = "mirroredCheckbox";
-            this.mirroredCheckbox.Size = new System.Drawing.Size(76, 20);
-            this.mirroredCheckbox.TabIndex = 32;
-            this.mirroredCheckbox.Text = "Mirrored";
-            this.mirrorTooltip.SetToolTip(this.mirroredCheckbox, "This mirrors the terrain along with all the objects on the track");
-            this.mirroredCheckbox.UseVisualStyleBackColor = true;
-            // 
-            // mirrorTooltip
-            // 
-            this.mirrorTooltip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.mirrorTooltip.ToolTipTitle = "Mirrored";
-            // 
-            // extraOptionsErrLabel
-            // 
-            this.extraOptionsErrLabel.BackColor = System.Drawing.Color.Transparent;
-            this.extraOptionsErrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.extraOptionsErrLabel.Location = new System.Drawing.Point(440, 350);
-            this.extraOptionsErrLabel.Name = "extraOptionsErrLabel";
-            this.extraOptionsErrLabel.Size = new System.Drawing.Size(254, 16);
-            this.extraOptionsErrLabel.TabIndex = 33;
-            this.extraOptionsErrLabel.Text = "label6";
-            this.extraOptionsErrLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // TrackScalerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -697,22 +701,22 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(720, 480);
-            this.Controls.Add(this.extraOptionsErrLabel);
-            this.Controls.Add(this.minimizeButton);
-            this.Controls.Add(this.exitButton2);
-            this.Controls.Add(this.extraOptionsPanel);
-            this.Controls.Add(this.factorScalePanel);
-            this.Controls.Add(this.scaleMethodPanel);
-            this.Controls.Add(this.filesToScalePanel);
+            this.Controls.Add(this.ExtraOptionsErrLabel);
+            this.Controls.Add(this.MinimizeButton);
+            this.Controls.Add(this.ExitButton2);
+            this.Controls.Add(this.ExtraOptionsPanel);
+            this.Controls.Add(this.FactorScalePanel);
+            this.Controls.Add(this.ScaleMethodPanel);
+            this.Controls.Add(this.FilesToScalePanel);
             this.Controls.Add(this.sideMenuPanel);
-            this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.filenameLabel);
-            this.Controls.Add(this.userInputErrLabel);
-            this.Controls.Add(this.progressLabel);
+            this.Controls.Add(this.ScalingProgressBar);
+            this.Controls.Add(this.TrackDirectoryLabel);
+            this.Controls.Add(this.UserInputErrLabel);
+            this.Controls.Add(this.ProgressLabel);
             this.Controls.Add(this.ScaleButton);
-            this.Controls.Add(this.fileCheckErrLabel);
+            this.Controls.Add(this.FileCheckErrLabel);
             this.Controls.Add(this.methodErrLabel);
-            this.Controls.Add(this.selectFolderLabel);
+            this.Controls.Add(this.SelectFolderLabel);
             this.Controls.Add(this.OpenFolderButton);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -724,21 +728,21 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TrackScalerForm_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TrackScalerForm_MouseUp);
             this.sideMenuPanel.ResumeLayout(false);
+            this.FilesToScalePanel.ResumeLayout(false);
+            this.FilesToScalePanel.PerformLayout();
+            this.ScaleMethodPanel.ResumeLayout(false);
+            this.ScaleMethodPanel.PerformLayout();
+            this.FactorScalePanel.ResumeLayout(false);
+            this.FactorScalePanel.PerformLayout();
+            this.ExtraOptionsPanel.ResumeLayout(false);
+            this.ExtraOptionsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scaleIconBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.methodIconBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileIconBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.filesToScalePanel.ResumeLayout(false);
-            this.filesToScalePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fileIconBox)).EndInit();
-            this.scaleMethodPanel.ResumeLayout(false);
-            this.scaleMethodPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.methodIconBox)).EndInit();
-            this.factorScalePanel.ResumeLayout(false);
-            this.factorScalePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.scaleIconBox)).EndInit();
-            this.extraOptionsPanel.ResumeLayout(false);
-            this.extraOptionsPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -747,52 +751,52 @@
         #endregion
 
         private System.Windows.Forms.Button OpenFolderButton;
-        private System.Windows.Forms.Label selectFolderLabel;
+        private System.Windows.Forms.Label SelectFolderLabel;
         private System.Windows.Forms.CheckBox AllCheckBox;
         private System.Windows.Forms.CheckBox TimingGateCheckBox;
         private System.Windows.Forms.CheckBox FlaggersCheckBox;
         private System.Windows.Forms.CheckBox DecalsCheckBox;
         private System.Windows.Forms.CheckBox StatueCheckBox;
         private System.Windows.Forms.CheckBox BillboardCheckBox;
-        private System.Windows.Forms.RadioButton ToFactorRadioButton;
+        private System.Windows.Forms.RadioButton ToTerrainScaleRadioButton;
         private System.Windows.Forms.RadioButton ByFactorRadioButton;
         private System.Windows.Forms.Label methodErrLabel;
-        private System.Windows.Forms.Label fileCheckErrLabel;
+        private System.Windows.Forms.Label FileCheckErrLabel;
         private System.Windows.Forms.Button ScaleButton;
-        private System.Windows.Forms.TextBox UserInputTextBox;
-        private System.Windows.Forms.Label progressLabel;
-        private System.Windows.Forms.Label userInputErrLabel;
-        private System.Windows.Forms.Label filenameLabel;
-        private System.Windows.Forms.CheckBox terrainCheckBox;
+        private System.Windows.Forms.TextBox UserInputScaleTextBox;
+        private System.Windows.Forms.Label ProgressLabel;
+        private System.Windows.Forms.Label UserInputErrLabel;
+        private System.Windows.Forms.Label TrackDirectoryLabel;
+        private System.Windows.Forms.CheckBox TerrainCheckBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private QuantumConcepts.Common.Forms.UI.Controls.NewProgressBar progressBar;
-        private System.Windows.Forms.CheckBox edinfoCheckbox;
+        private QuantumConcepts.Common.Forms.UI.Controls.NewProgressBar ScalingProgressBar;
+        private System.Windows.Forms.CheckBox GradientCheckbox;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.CheckBox disableScaleYCheckBox;
-        private System.Windows.Forms.ToolTip yscalingtoolTip;
+        private System.Windows.Forms.CheckBox DisableScaleYCheckBox;
+        private System.Windows.Forms.ToolTip VerticalScalingTooltip;
         private System.Windows.Forms.Panel sideMenuPanel;
-        private System.Windows.Forms.Button exitButton;
-        private System.Windows.Forms.Panel filesToScalePanel;
-        private System.Windows.Forms.Label filesToScaleLabel;
-        private System.Windows.Forms.Panel scaleMethodPanel;
-        private System.Windows.Forms.Label scaleMethodLabel;
-        private System.Windows.Forms.Panel factorScalePanel;
-        private System.Windows.Forms.Label factorScaleLabel;
-        private System.Windows.Forms.Panel extraOptionsPanel;
-        private System.Windows.Forms.Label extraOptionsLabel;
-        private System.Windows.Forms.Label newTrackSizeLabel;
+        private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Panel FilesToScalePanel;
+        private System.Windows.Forms.Label FilesToScaleLabel;
+        private System.Windows.Forms.Panel ScaleMethodPanel;
+        private System.Windows.Forms.Label ScaleMethodLabel;
+        private System.Windows.Forms.Panel FactorScalePanel;
+        private System.Windows.Forms.Label FactorScaleLabel;
+        private System.Windows.Forms.Panel ExtraOptionsPanel;
+        private System.Windows.Forms.Label ExtraOptionsLabel;
+        private System.Windows.Forms.Label NewTrackSizeLabel;
         private System.Windows.Forms.PictureBox fileIconBox;
         private System.Windows.Forms.PictureBox methodIconBox;
         private System.Windows.Forms.PictureBox scaleIconBox;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label authorLabel;
-        private System.Windows.Forms.Button exitButton2;
-        private System.Windows.Forms.Button minimizeButton;
-        private System.Windows.Forms.CheckBox mirroredCheckbox;
-        private System.Windows.Forms.ToolTip mirrorTooltip;
-        private System.Windows.Forms.Label extraOptionsErrLabel;
+        private System.Windows.Forms.Label TitleLabel;
+        private System.Windows.Forms.Label AuthorLabel;
+        private System.Windows.Forms.Button ExitButton2;
+        private System.Windows.Forms.Button MinimizeButton;
+        private System.Windows.Forms.CheckBox MirroredCheckbox;
+        private System.Windows.Forms.ToolTip MirrorTooltip;
+        private System.Windows.Forms.Label ExtraOptionsErrLabel;
     }
 }
 

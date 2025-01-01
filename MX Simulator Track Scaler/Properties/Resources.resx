@@ -133,6 +133,9 @@
   <data name="racing-flag-icon-race-checker-chequred-checkered-flag-tom-hill-transparent" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\racing-flag-icon-race-checker-chequred-checkered-flag-tom-hill-transparent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="minimizeicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\minimizeicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="scale icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\scale icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -145,7 +148,7 @@
   <data name="exiticon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\exiticon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="minimizeicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\minimizeicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="exiticongreyed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exiticongreyed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

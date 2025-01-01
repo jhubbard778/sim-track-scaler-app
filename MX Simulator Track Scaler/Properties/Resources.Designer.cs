@@ -93,6 +93,16 @@ namespace MX_Simulator_Track_Scaler.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap exiticongreyed {
+            get {
+                object obj = ResourceManager.GetObject("exiticongreyed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Folder_Icon {
             get {
                 object obj = ResourceManager.GetObject("Folder_Icon", resourceCulture);
