@@ -17,21 +17,21 @@
 mono_crash.*
 
 # Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
+MX\ Simulator\ Track\ Scaler/[Dd]ebug/
+MX\ Simulator\ Track\ Scaler/[Dd]ebugPublic/
+MX\ Simulator\ Track\ Scaler/[Rr]elease/
+MX\ Simulator\ Track\ Scaler/[Rr]eleases/
 x64/
 x86/
 [Ww][Ii][Nn]32/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-[Bb]in/
-[Oo]bj/
-[Oo]ut/
-[Ll]og/
-[Ll]ogs/
+MX\ Simulator\ Track\ Scaler/[Bb]in/
+MX\ Simulator\ Track\ Scaler/[Oo]bj/
+MX\ Simulator\ Track\ Scaler/[Oo]ut/
+MX\ Simulator\ Track\ Scaler/[Ll]og/
+MX\ Simulator\ Track\ Scaler/[Ll]ogs/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -177,7 +177,7 @@ DocProject/Help/Html2
 DocProject/Help/html
 
 # Click-Once directory
-publish/
+MX\ Simulator\ Track\ Scaler/publish/
 
 # Publish Web Output
 *.[Pp]ublish.xml
