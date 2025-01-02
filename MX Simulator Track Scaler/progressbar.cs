@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace QuantumConcepts.Common.Forms.UI.Controls
+namespace MX_Simulator_Track_Scaler
 {
     public class NewProgressBar : ProgressBar
     {

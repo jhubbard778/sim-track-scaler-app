@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.IO;
-using QuantumConcepts.Common.Forms.UI.Controls;
 using System.Collections.Generic;
 
 namespace MX_Simulator_Track_Scaler

@@ -66,7 +66,7 @@
             this.ExtraOptionsLabel = new System.Windows.Forms.Label();
             this.MirrorTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.ExtraOptionsErrLabel = new System.Windows.Forms.Label();
-            this.ScalingProgressBar = new QuantumConcepts.Common.Forms.UI.Controls.NewProgressBar();
+            this.ScalingProgressBar = new MX_Simulator_Track_Scaler.NewProgressBar();
             this.MinimizeButton = new System.Windows.Forms.Button();
             this.ExitButton2 = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -770,7 +770,7 @@
         private System.Windows.Forms.CheckBox TerrainCheckBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private QuantumConcepts.Common.Forms.UI.Controls.NewProgressBar ScalingProgressBar;
+        private MX_Simulator_Track_Scaler.NewProgressBar ScalingProgressBar;
         private System.Windows.Forms.CheckBox GradientCheckbox;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.CheckBox DisableScaleYCheckBox;

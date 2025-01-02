@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using QuantumConcepts.Common.Forms.UI.Controls;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
