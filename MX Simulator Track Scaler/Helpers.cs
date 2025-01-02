@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static MX_Simulator_Track_Scaler.Enums;
 
 namespace MX_Simulator_Track_Scaler
 {
@@ -72,9 +73,10 @@ namespace MX_Simulator_Track_Scaler
             // Total lines is initialized to 1 for the 1 line in terrain.hf
             int totalLines = scalerForm.IsTerrainChecked ? 1 : 0;
 
-            foreach (KeyValuePair<string, CheckBox> pair in scalerForm.ScalerFormCheckboxes)
+            foreach (KeyValuePair<TrackFileTypes, CheckBox> pair in scalerForm.fileCheckBoxes)
             {
-                string filename = pair.Key;
+                TrackFileTypes fileType = pair.Key;
+                string filename = TrackFileNamesMap[fileType];
                 CheckBox checkbox = pair.Value;
 
                 string filePath = DirectoryInfo.trackFolderPath + '\\' + filename;

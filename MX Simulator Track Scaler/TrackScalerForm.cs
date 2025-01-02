@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.IO;
 using System.Collections.Generic;
+using static MX_Simulator_Track_Scaler.Enums;
 
 namespace MX_Simulator_Track_Scaler
 {
@@ -24,11 +25,10 @@ namespace MX_Simulator_Track_Scaler
         public bool IsMirrorEnabled { get { return MirroredCheckbox.Checked; } }
         public bool IsByFactorScale { get { return ByFactorRadioButton.Checked; } }
         public bool IsTerrainChecked { get { return TerrainCheckBox.Checked; } }
-        public Dictionary<string, CheckBox> ScalerFormCheckboxes { get { return fileCheckBoxes; } }
 
 
 
-        private Dictionary<string, CheckBox> fileCheckBoxes;
+        public Dictionary<TrackFileTypes, CheckBox> fileCheckBoxes;
 
         private Point lastLocation;
         private bool mouseDown;
@@ -43,13 +43,13 @@ namespace MX_Simulator_Track_Scaler
             TrackDirectoryLabel.ResetText();
             ExtraOptionsErrLabel.ResetText();
 
-            fileCheckBoxes = new Dictionary<string, CheckBox>() {
-                { "billboards", BillboardCheckBox },
-                { "statues", StatueCheckBox },
-                { "decals", DecalsCheckBox },
-                { "flaggers", FlaggersCheckBox },
-                { "timing_gates", TimingGateCheckBox },
-                { "edinfo", GradientCheckbox }
+            fileCheckBoxes = new Dictionary<TrackFileTypes, CheckBox>() {
+                { TrackFileTypes.Billboards, BillboardCheckBox },
+                { TrackFileTypes.Statues, StatueCheckBox },
+                { TrackFileTypes.Decals, DecalsCheckBox },
+                { TrackFileTypes.Flaggers, FlaggersCheckBox },
+                { TrackFileTypes.TimingGates, TimingGateCheckBox },
+                { TrackFileTypes.Gradients, GradientCheckbox }
             };
 
             // If there's no python interpreter path on the machine disable the checkbox
@@ -84,8 +84,9 @@ namespace MX_Simulator_Track_Scaler
 
             foreach (var pair in fileCheckBoxes)
             {
-
                 CheckBox checkbox = pair.Value;
+                if (!checkbox.Enabled) continue;
+
                 checkbox.Checked = boxChecked;
             }
         }
@@ -180,7 +181,8 @@ namespace MX_Simulator_Track_Scaler
             // Make sure all checkboxes selected have the associated files with them
             foreach (var pair in fileCheckBoxes)
             {
-                string filename = pair.Key;
+                TrackFileTypes fileType = pair.Key;
+                string filename = TrackFileNamesMap[fileType];
                 CheckBox checkbox = pair.Value;
                 if (!Helpers.IsCheckboxSelectionValid(checkbox, filename, FileCheckErrLabel)) return;
             }
@@ -219,12 +221,13 @@ namespace MX_Simulator_Track_Scaler
             
             foreach (var pair in fileCheckBoxes)
             {
-                string filename = pair.Key;
+                TrackFileTypes fileType = pair.Key;
+                string filename = TrackFileNamesMap[fileType];
                 CheckBox checkbox = pair.Value;
 
                 UIHelper.ChangeLabel(ProgressLabel, Color.White, $"Scaling {filename}...");
 
-                if (checkbox.Checked && !await FileParser.ScaleTrackFile(this, filename)) return;
+                if (checkbox.Checked && !await FileParser.ScaleTrackFile(this, fileType)) return;
             }
 
             // Do Mirror work

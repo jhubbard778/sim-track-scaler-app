@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DirectoryInfo.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="FileParser.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="MirrorHelper.cs" />

@@ -8,6 +8,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using static MX_Simulator_Track_Scaler.Enums;
 
 namespace MX_Simulator_Track_Scaler
 {
@@ -17,63 +18,44 @@ namespace MX_Simulator_Track_Scaler
         private static StreamReader trackFileToRead;
         private static StreamWriter tempFile;
         private static string tempPath;
+        private static string currentFilename;
 
-        public async static Task<bool> ScaleTrackFile(TrackScalerForm ScalerForm, string file)
+        private static readonly Dictionary<TrackFileTypes, Func<bool>> TrackTypeToFunctionMap = new Dictionary<TrackFileTypes, Func<bool>>
+        {
+            { TrackFileTypes.TimingGates, () => ScaleTimingGates() },
+            { TrackFileTypes.Gradients, () => ScaleGradients() },
+            { TrackFileTypes.Flaggers, () => ScaleFlaggers() },
+            { TrackFileTypes.Decals, () => ScaleDecals() },
+            { TrackFileTypes.Statues, () => ScaleStatues() },
+            { TrackFileTypes.Billboards, () => ScaleBillboards() },
+        };
+
+        public async static Task<bool> ScaleTrackFile(TrackScalerForm ScalerForm, TrackFileTypes fileType)
         {
             return await Task.Run(() =>
             {
+                currentFilename = TrackFileNamesMap[fileType];
+
                 if (ScaleInfo.isUnchangingScale)
                 {
-                    UIHelper.PerformProgressStep(ScalerForm, Helpers.GetFileLineCount(file));
+                    UIHelper.PerformProgressStep(ScalerForm, Helpers.GetFileLineCount(currentFilename));
                     return true;
                 }
 
                 fileParserTrackForm = ScalerForm;
-
-                string trackFilePath = DirectoryInfo.trackFolderPath + $"\\{file}";
+                string trackFilePath = DirectoryInfo.trackFolderPath + $"\\{currentFilename}";
                 trackFileToRead = File.OpenText(trackFilePath);
 
                 tempPath = Path.GetTempFileName();
                 tempFile = File.CreateText(tempPath);
-                if (tempFile.BaseStream == null)
-                {
-                    return false;
-                }
 
-                switch (file)
-                {
-                    // ugly - fix
-                    case "timing_gates":
-                        if (!ScaleTimingGates()) return false;
-                        break;
-                    case "edinfo":
-                        if (!ScaleGradients()) return false;
-                        break;
-                    case "flaggers":
-                        if (!ScaleFlaggers()) return false;
-                        break;
-                    case "decals":
-                        if (!ScaleDecals()) return false;
-                        break;
-                    case "statues":
-                        if (!ScaleStatues()) return false;
-                        break;
-                    case "billboards":
-                        if (!ScaleBillboards()) return false;
-                        break;
-                    default:
-                        break;
-                }
+                // Use map to point to scale function based on track file type
+                if (!TrackTypeToFunctionMap[fileType]()) return false;
 
-                Helpers.CleanupFilesAndMoveTempFile(file, trackFileToRead, tempFile, tempPath);
+                Helpers.CleanupFilesAndMoveTempFile(currentFilename, trackFileToRead, tempFile, tempPath);
                 return true;
             });
         }
-
-        /*private static bool ScaleGenericFile()
-        {
-            return true;
-        }*/
 
         private static bool ScaleTimingGates()
         {
@@ -117,7 +99,7 @@ namespace MX_Simulator_Track_Scaler
                 {
                     // Check line to make sure it's valid
                     bool lineHasCorrectFormatting = line[0] == '[' && args[2].EndsWith("]");
-                    if (!HasAtLeastArgumentLength(args, 4, "Timing Gates", lineHasCorrectFormatting)) return false;
+                    if (!HasAtLeastArgumentLength(args, 4, currentFilename, lineHasCorrectFormatting)) return false;
 
                     args[0] = args[0].Replace("[", string.Empty);
                     args[2] = args[2].Replace("]", string.Empty);
@@ -138,7 +120,7 @@ namespace MX_Simulator_Track_Scaler
                     {
                         if (parsers[i](args[i])) continue;
 
-                        UIHelper.ParseError(fileParserTrackForm, "Timing Gates", trackFileToRead, tempFile);
+                        UIHelper.ParseError(fileParserTrackForm, currentFilename, trackFileToRead, tempFile);
                         return false;
                     }
                     
@@ -171,7 +153,7 @@ namespace MX_Simulator_Track_Scaler
                 {
                     // Check lines to make sure they're valid
                     bool lineHasCorrectFormatting = args[1].StartsWith("[") && args[3].EndsWith("]") && args[4].StartsWith("[") && args[6].EndsWith("]");
-                    if (!HasArgumentLength(args, 7, "Timing Gates", lineHasCorrectFormatting)) return false;
+                    if (!HasArgumentLength(args, 7, currentFilename, lineHasCorrectFormatting)) return false;
 
                     // Replace Brackets
                     args[1] = args[1].Replace("[", string.Empty);
@@ -196,7 +178,7 @@ namespace MX_Simulator_Track_Scaler
                     {
                         if (parsers[i](args[i])) continue;
 
-                        UIHelper.ParseError(fileParserTrackForm, "Timing Gates", trackFileToRead, tempFile);
+                        UIHelper.ParseError(fileParserTrackForm, currentFilename, trackFileToRead, tempFile);
                         return false;
                     }
 
@@ -242,7 +224,7 @@ namespace MX_Simulator_Track_Scaler
                 string[] args = line.Split(' ');
 
                 bool lineHasCorrectFormatting = args[0].StartsWith("[") && args[2].EndsWith("]");
-                if (!HasArgumentLength(args, 3, "Flaggers", lineHasCorrectFormatting)) return false;
+                if (!HasArgumentLength(args, 3, currentFilename, lineHasCorrectFormatting)) return false;
 
                 // replace brackets
                 args[0] = args[0].Replace("[", string.Empty);
@@ -260,7 +242,7 @@ namespace MX_Simulator_Track_Scaler
                 for (int i = 0; i < parsers.Length; i++)
                 {
                     if (parsers[i](args[i])) continue;
-                    UIHelper.ParseError(fileParserTrackForm, "Flaggers", trackFileToRead, tempFile);
+                    UIHelper.ParseError(fileParserTrackForm, currentFilename, trackFileToRead, tempFile);
                     return false;
                 }
 
@@ -293,7 +275,7 @@ namespace MX_Simulator_Track_Scaler
                 {
                     // Process gradient x and z points
                     // add_gradient <start_x> <start_z> <end_x> <end_z>
-                    if (!HasArgumentLength(args, 5, "edinfo")) return false;
+                    if (!HasArgumentLength(args, 5, currentFilename)) return false;
 
                     decimal startX = 0, startZ = 0, endX = 0, endZ = 0;
                     var parsers = new Func<string, bool>[]
@@ -308,7 +290,7 @@ namespace MX_Simulator_Track_Scaler
                     {
                         if (parsers[i](args[i + 1])) continue;
 
-                        UIHelper.ParseError(fileParserTrackForm, "edinfo", trackFileToRead, tempFile);
+                        UIHelper.ParseError(fileParserTrackForm, currentFilename, trackFileToRead, tempFile);
                         return false;
                     }
 
@@ -330,7 +312,7 @@ namespace MX_Simulator_Track_Scaler
                 {
                     // Process gradient points
                     // add_point <0 linear, 1 curved> <distance from origin> <height>
-                    if (!HasArgumentLength(args, 4, "edinfo")) return false;
+                    if (!HasArgumentLength(args, 4, currentFilename)) return false;
 
                     int pointType = 0;
                     decimal originDistance = 0, height = 0;
@@ -347,7 +329,7 @@ namespace MX_Simulator_Track_Scaler
                     {
                         if (parsers[i](args[i + 1])) continue;
 
-                        UIHelper.ParseError(fileParserTrackForm, "edinfo", trackFileToRead, tempFile);
+                        UIHelper.ParseError(fileParserTrackForm, currentFilename, trackFileToRead, tempFile);
                         return false;
                     }
 
@@ -378,7 +360,7 @@ namespace MX_Simulator_Track_Scaler
 
                 // if the format is not in decals throw error
                 bool lineHasCorrectFormatting = line[0] == '[' && args[1].EndsWith("]");
-                if (!HasArgumentLength(args, 6, "Decals", lineHasCorrectFormatting)) return false;
+                if (!HasArgumentLength(args, 6, currentFilename, lineHasCorrectFormatting)) return false;
                 
                 // replace brackets
                 args[0] = args[0].Replace("[", string.Empty);
@@ -398,7 +380,7 @@ namespace MX_Simulator_Track_Scaler
                 {
                     if (parsers[i](args[i])) continue;
 
-                    UIHelper.ParseError(fileParserTrackForm, "Decals", trackFileToRead, tempFile);
+                    UIHelper.ParseError(fileParserTrackForm, currentFilename, trackFileToRead, tempFile);
                     return false;
                 }
 
@@ -442,7 +424,7 @@ namespace MX_Simulator_Track_Scaler
 
                 // if the format is not in statues format throw error
                 bool lineHasCorrectFormatting = line[0] == '[' && args[2].EndsWith("]");
-                if (!HasArgumentLength(args, 7, "Statues", lineHasCorrectFormatting)) return false;
+                if (!HasArgumentLength(args, 7, currentFilename, lineHasCorrectFormatting)) return false;
 
                 // replace brackets
                 args[0] = args[0].Replace("[", string.Empty);
@@ -463,7 +445,7 @@ namespace MX_Simulator_Track_Scaler
                 {
                     if (parsers[i](args[i])) continue;
 
-                    UIHelper.ParseError(fileParserTrackForm, "Statues", trackFileToRead, tempFile);
+                    UIHelper.ParseError(fileParserTrackForm, currentFilename, trackFileToRead, tempFile);
                     return false;
                 }
 
@@ -506,7 +488,7 @@ namespace MX_Simulator_Track_Scaler
 
                 // if the format is not in billboards format throw error
                 bool lineHasCorrectFormatting = line[0] == '[' && args[2].EndsWith("]");
-                if (!HasArgumentLength(args, 6, "billboards", lineHasCorrectFormatting)) return false;
+                if (!HasArgumentLength(args, 6, currentFilename, lineHasCorrectFormatting)) return false;
 
                 // replace brackets
                 args[0] = args[0].Replace("[", string.Empty);
@@ -526,7 +508,7 @@ namespace MX_Simulator_Track_Scaler
                 {
                     if (parsers[i](args[i])) continue;
 
-                    UIHelper.ParseError(fileParserTrackForm, "billboards", trackFileToRead, tempFile);
+                    UIHelper.ParseError(fileParserTrackForm, currentFilename, trackFileToRead, tempFile);
                     return false;
                 }
 

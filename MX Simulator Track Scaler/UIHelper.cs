@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WK.Libraries.BetterFolderBrowserNS;
+using static MX_Simulator_Track_Scaler.Enums;
 
 namespace MX_Simulator_Track_Scaler
 {
@@ -79,6 +80,14 @@ namespace MX_Simulator_Track_Scaler
                 }
 
                 ChangeLabel(ScalerForm.FormTrackDirectoryLabel, Color.White, DirectoryInfo.trackFolderPath);
+
+                // Set disable/enable checkboxes based on folder selection
+                foreach (KeyValuePair<TrackFileTypes, CheckBox> pair in ScalerForm.fileCheckBoxes)
+                {
+                    string filename = TrackFileNamesMap[pair.Key];
+                    var checkBox = pair.Value;
+                    checkBox.Enabled = File.Exists(DirectoryInfo.trackFolderPath + '\\' + filename);
+                }
             }
         }
 
