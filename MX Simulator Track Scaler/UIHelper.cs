@@ -81,6 +81,9 @@ namespace MX_Simulator_Track_Scaler
 
                 ChangeLabel(ScalerForm.FormTrackDirectoryLabel, Color.White, DirectoryInfo.trackFolderPath);
 
+                ScalerForm.FormAllCheckbox.Enabled = true;
+                ScalerForm.FormTerrainCheckbox.Enabled = true;
+                
                 // Set disable/enable checkboxes based on folder selection
                 foreach (KeyValuePair<TrackFileTypes, CheckBox> pair in ScalerForm.fileCheckBoxes)
                 {

@@ -26,9 +26,9 @@ namespace MX_Simulator_Track_Scaler
         public bool IsByFactorScale { get { return ByFactorRadioButton.Checked; } }
         public bool IsTerrainChecked { get { return TerrainCheckBox.Checked; } }
 
-
-
         public Dictionary<TrackFileTypes, CheckBox> fileCheckBoxes;
+        public CheckBox FormAllCheckbox { get { return AllCheckBox; } }
+        public CheckBox FormTerrainCheckbox { get { return TerrainCheckBox; } }
 
         private Point lastLocation;
         private bool mouseDown;
@@ -42,6 +42,8 @@ namespace MX_Simulator_Track_Scaler
             UserInputErrLabel.ResetText();
             TrackDirectoryLabel.ResetText();
             ExtraOptionsErrLabel.ResetText();
+            TerrainCheckBox.Enabled = false;
+            AllCheckBox.Enabled = false;
 
             fileCheckBoxes = new Dictionary<TrackFileTypes, CheckBox>() {
                 { TrackFileTypes.Billboards, BillboardCheckBox },
@@ -51,6 +53,12 @@ namespace MX_Simulator_Track_Scaler
                 { TrackFileTypes.TimingGates, TimingGateCheckBox },
                 { TrackFileTypes.Gradients, GradientCheckbox }
             };
+
+            foreach (KeyValuePair<TrackFileTypes, CheckBox> pair in fileCheckBoxes)
+            {
+                CheckBox checkbox = pair.Value;
+                checkbox.Enabled = false;
+            }
 
             // If there's no python interpreter path on the machine disable the checkbox
             if (!PythonProcess.pythonPathExists || !File.Exists(MirrorHelper.mirrorScriptPath))

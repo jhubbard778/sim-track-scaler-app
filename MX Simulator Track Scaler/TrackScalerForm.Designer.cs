@@ -54,41 +54,41 @@
             this.AuthorLabel = new System.Windows.Forms.Label();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.ExitButton = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.FilesToScalePanel = new System.Windows.Forms.Panel();
+            this.fileIconBox = new System.Windows.Forms.PictureBox();
             this.FilesToScaleLabel = new System.Windows.Forms.Label();
             this.ScaleMethodPanel = new System.Windows.Forms.Panel();
+            this.methodIconBox = new System.Windows.Forms.PictureBox();
             this.ScaleMethodLabel = new System.Windows.Forms.Label();
             this.FactorScalePanel = new System.Windows.Forms.Panel();
+            this.scaleIconBox = new System.Windows.Forms.PictureBox();
             this.NewTrackSizeLabel = new System.Windows.Forms.Label();
             this.FactorScaleLabel = new System.Windows.Forms.Label();
             this.ExtraOptionsPanel = new System.Windows.Forms.Panel();
             this.MirroredCheckbox = new System.Windows.Forms.CheckBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.ExtraOptionsLabel = new System.Windows.Forms.Label();
             this.MirrorTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.ExtraOptionsErrLabel = new System.Windows.Forms.Label();
             this.ScalingProgressBar = new MX_Simulator_Track_Scaler.NewProgressBar();
             this.MinimizeButton = new System.Windows.Forms.Button();
             this.ExitButton2 = new System.Windows.Forms.Button();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.scaleIconBox = new System.Windows.Forms.PictureBox();
-            this.methodIconBox = new System.Windows.Forms.PictureBox();
-            this.fileIconBox = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.OpenFolderButton = new System.Windows.Forms.Button();
             this.sideMenuPanel.SuspendLayout();
-            this.FilesToScalePanel.SuspendLayout();
-            this.ScaleMethodPanel.SuspendLayout();
-            this.FactorScalePanel.SuspendLayout();
-            this.ExtraOptionsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.scaleIconBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.methodIconBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileIconBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.FilesToScalePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileIconBox)).BeginInit();
+            this.ScaleMethodPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.methodIconBox)).BeginInit();
+            this.FactorScalePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scaleIconBox)).BeginInit();
+            this.ExtraOptionsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // SelectFolderLabel
@@ -107,6 +107,7 @@
             // GradientCheckbox
             // 
             this.GradientCheckbox.AutoSize = true;
+            this.GradientCheckbox.BackColor = System.Drawing.Color.Transparent;
             this.GradientCheckbox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.GradientCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GradientCheckbox.ForeColor = System.Drawing.Color.White;
@@ -115,7 +116,7 @@
             this.GradientCheckbox.Size = new System.Drawing.Size(64, 20);
             this.GradientCheckbox.TabIndex = 24;
             this.GradientCheckbox.Text = "Edinfo";
-            this.GradientCheckbox.UseVisualStyleBackColor = true;
+            this.GradientCheckbox.UseVisualStyleBackColor = false;
             // 
             // TerrainCheckBox
             // 
@@ -135,6 +136,7 @@
             // AllCheckBox
             // 
             this.AllCheckBox.AutoSize = true;
+            this.AllCheckBox.BackColor = System.Drawing.Color.Transparent;
             this.AllCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AllCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AllCheckBox.ForeColor = System.Drawing.Color.White;
@@ -143,12 +145,13 @@
             this.AllCheckBox.Size = new System.Drawing.Size(41, 20);
             this.AllCheckBox.TabIndex = 9;
             this.AllCheckBox.Text = "All";
-            this.AllCheckBox.UseVisualStyleBackColor = true;
+            this.AllCheckBox.UseVisualStyleBackColor = false;
             this.AllCheckBox.CheckedChanged += new System.EventHandler(this.AllCheckBox_CheckedChanged);
             // 
             // TimingGateCheckBox
             // 
             this.TimingGateCheckBox.AutoSize = true;
+            this.TimingGateCheckBox.BackColor = System.Drawing.Color.Transparent;
             this.TimingGateCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.TimingGateCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TimingGateCheckBox.ForeColor = System.Drawing.Color.White;
@@ -157,7 +160,7 @@
             this.TimingGateCheckBox.Size = new System.Drawing.Size(106, 20);
             this.TimingGateCheckBox.TabIndex = 8;
             this.TimingGateCheckBox.Text = "Timing Gates";
-            this.TimingGateCheckBox.UseVisualStyleBackColor = true;
+            this.TimingGateCheckBox.UseVisualStyleBackColor = false;
             // 
             // FlaggersCheckBox
             // 
@@ -176,6 +179,7 @@
             // DecalsCheckBox
             // 
             this.DecalsCheckBox.AutoSize = true;
+            this.DecalsCheckBox.BackColor = System.Drawing.Color.Transparent;
             this.DecalsCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DecalsCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DecalsCheckBox.ForeColor = System.Drawing.Color.White;
@@ -184,11 +188,12 @@
             this.DecalsCheckBox.Size = new System.Drawing.Size(69, 20);
             this.DecalsCheckBox.TabIndex = 6;
             this.DecalsCheckBox.Text = "Decals";
-            this.DecalsCheckBox.UseVisualStyleBackColor = true;
+            this.DecalsCheckBox.UseVisualStyleBackColor = false;
             // 
             // StatueCheckBox
             // 
             this.StatueCheckBox.AutoSize = true;
+            this.StatueCheckBox.BackColor = System.Drawing.Color.Transparent;
             this.StatueCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.StatueCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatueCheckBox.ForeColor = System.Drawing.Color.White;
@@ -197,11 +202,12 @@
             this.StatueCheckBox.Size = new System.Drawing.Size(71, 20);
             this.StatueCheckBox.TabIndex = 5;
             this.StatueCheckBox.Text = "Statues";
-            this.StatueCheckBox.UseVisualStyleBackColor = true;
+            this.StatueCheckBox.UseVisualStyleBackColor = false;
             // 
             // BillboardCheckBox
             // 
             this.BillboardCheckBox.AutoSize = true;
+            this.BillboardCheckBox.BackColor = System.Drawing.Color.Transparent;
             this.BillboardCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BillboardCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BillboardCheckBox.ForeColor = System.Drawing.Color.White;
@@ -210,7 +216,7 @@
             this.BillboardCheckBox.Size = new System.Drawing.Size(87, 20);
             this.BillboardCheckBox.TabIndex = 4;
             this.BillboardCheckBox.Text = "Billboards";
-            this.BillboardCheckBox.UseVisualStyleBackColor = true;
+            this.BillboardCheckBox.UseVisualStyleBackColor = false;
             // 
             // ToTerrainScaleRadioButton
             // 
@@ -403,6 +409,36 @@
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             this.ExitButton.Paint += new System.Windows.Forms.PaintEventHandler(this.ExitButton_Paint);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.cube_icon_kjijxo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(10, 90);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(113, 108);
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.sticker;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox3.Location = new System.Drawing.Point(10, 204);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(114, 107);
+            this.pictureBox3.TabIndex = 27;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.racing_flag_icon_race_checker_chequred_checkered_flag_tom_hill_transparent;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Location = new System.Drawing.Point(10, 317);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(114, 107);
+            this.pictureBox2.TabIndex = 25;
+            this.pictureBox2.TabStop = false;
+            // 
             // FilesToScalePanel
             // 
             this.FilesToScalePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
@@ -422,6 +458,16 @@
             this.FilesToScalePanel.Name = "FilesToScalePanel";
             this.FilesToScalePanel.Size = new System.Drawing.Size(254, 142);
             this.FilesToScalePanel.TabIndex = 10;
+            // 
+            // fileIconBox
+            // 
+            this.fileIconBox.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources._263103;
+            this.fileIconBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.fileIconBox.Location = new System.Drawing.Point(8, 7);
+            this.fileIconBox.Name = "fileIconBox";
+            this.fileIconBox.Size = new System.Drawing.Size(25, 35);
+            this.fileIconBox.TabIndex = 25;
+            this.fileIconBox.TabStop = false;
             // 
             // FilesToScaleLabel
             // 
@@ -448,6 +494,16 @@
             this.ScaleMethodPanel.Size = new System.Drawing.Size(254, 142);
             this.ScaleMethodPanel.TabIndex = 25;
             // 
+            // methodIconBox
+            // 
+            this.methodIconBox.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.method_icon;
+            this.methodIconBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.methodIconBox.Location = new System.Drawing.Point(11, 10);
+            this.methodIconBox.Name = "methodIconBox";
+            this.methodIconBox.Size = new System.Drawing.Size(33, 35);
+            this.methodIconBox.TabIndex = 26;
+            this.methodIconBox.TabStop = false;
+            // 
             // ScaleMethodLabel
             // 
             this.ScaleMethodLabel.AutoSize = true;
@@ -472,6 +528,16 @@
             this.FactorScalePanel.Name = "FactorScalePanel";
             this.FactorScalePanel.Size = new System.Drawing.Size(254, 117);
             this.FactorScalePanel.TabIndex = 26;
+            // 
+            // scaleIconBox
+            // 
+            this.scaleIconBox.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.scale_icon;
+            this.scaleIconBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.scaleIconBox.Location = new System.Drawing.Point(10, 9);
+            this.scaleIconBox.Name = "scaleIconBox";
+            this.scaleIconBox.Size = new System.Drawing.Size(33, 35);
+            this.scaleIconBox.TabIndex = 27;
+            this.scaleIconBox.TabStop = false;
             // 
             // NewTrackSizeLabel
             // 
@@ -523,6 +589,16 @@
             this.MirroredCheckbox.Text = "Mirrored";
             this.MirrorTooltip.SetToolTip(this.MirroredCheckbox, "This mirrors the terrain along with all the objects on the track");
             this.MirroredCheckbox.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.options_icon;
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox4.Location = new System.Drawing.Point(9, 9);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(29, 24);
+            this.pictureBox4.TabIndex = 31;
+            this.pictureBox4.TabStop = false;
             // 
             // ExtraOptionsLabel
             // 
@@ -603,76 +679,6 @@
             this.ExitButton2.EnabledChanged += new System.EventHandler(this.ExitButton2_EnabledChanged);
             this.ExitButton2.Click += new System.EventHandler(this.ExitButton_Click);
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.options_icon;
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox4.Location = new System.Drawing.Point(9, 9);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(29, 24);
-            this.pictureBox4.TabIndex = 31;
-            this.pictureBox4.TabStop = false;
-            // 
-            // scaleIconBox
-            // 
-            this.scaleIconBox.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.scale_icon;
-            this.scaleIconBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.scaleIconBox.Location = new System.Drawing.Point(10, 9);
-            this.scaleIconBox.Name = "scaleIconBox";
-            this.scaleIconBox.Size = new System.Drawing.Size(33, 35);
-            this.scaleIconBox.TabIndex = 27;
-            this.scaleIconBox.TabStop = false;
-            // 
-            // methodIconBox
-            // 
-            this.methodIconBox.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.method_icon;
-            this.methodIconBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.methodIconBox.Location = new System.Drawing.Point(11, 10);
-            this.methodIconBox.Name = "methodIconBox";
-            this.methodIconBox.Size = new System.Drawing.Size(33, 35);
-            this.methodIconBox.TabIndex = 26;
-            this.methodIconBox.TabStop = false;
-            // 
-            // fileIconBox
-            // 
-            this.fileIconBox.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources._263103;
-            this.fileIconBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.fileIconBox.Location = new System.Drawing.Point(8, 7);
-            this.fileIconBox.Name = "fileIconBox";
-            this.fileIconBox.Size = new System.Drawing.Size(25, 35);
-            this.fileIconBox.TabIndex = 25;
-            this.fileIconBox.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.cube_icon_kjijxo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 90);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(113, 108);
-            this.pictureBox1.TabIndex = 24;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.sticker;
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.Location = new System.Drawing.Point(10, 204);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(114, 107);
-            this.pictureBox3.TabIndex = 27;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = global::MX_Simulator_Track_Scaler.Properties.Resources.racing_flag_icon_race_checker_chequred_checkered_flag_tom_hill_transparent;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(10, 317);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(114, 107);
-            this.pictureBox2.TabIndex = 25;
-            this.pictureBox2.TabStop = false;
-            // 
             // OpenFolderButton
             // 
             this.OpenFolderButton.BackColor = System.Drawing.Color.Transparent;
@@ -728,21 +734,21 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TrackScalerForm_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TrackScalerForm_MouseUp);
             this.sideMenuPanel.ResumeLayout(false);
-            this.FilesToScalePanel.ResumeLayout(false);
-            this.FilesToScalePanel.PerformLayout();
-            this.ScaleMethodPanel.ResumeLayout(false);
-            this.ScaleMethodPanel.PerformLayout();
-            this.FactorScalePanel.ResumeLayout(false);
-            this.FactorScalePanel.PerformLayout();
-            this.ExtraOptionsPanel.ResumeLayout(false);
-            this.ExtraOptionsPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.scaleIconBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.methodIconBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileIconBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.FilesToScalePanel.ResumeLayout(false);
+            this.FilesToScalePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileIconBox)).EndInit();
+            this.ScaleMethodPanel.ResumeLayout(false);
+            this.ScaleMethodPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.methodIconBox)).EndInit();
+            this.FactorScalePanel.ResumeLayout(false);
+            this.FactorScalePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scaleIconBox)).EndInit();
+            this.ExtraOptionsPanel.ResumeLayout(false);
+            this.ExtraOptionsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
